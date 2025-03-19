@@ -1,0 +1,65 @@
+site_name: "Anàlisi i Disseny Orientat a Objectes"
+
+nav:
+  - "Inici": 'index.md'
+  - "1. UML": '1.UML.md'
+  - "2. Diagrama de casos d'us": '2.DiagramesCasosUs.md'
+  - "3. Diagrama de classes": '3.DiagramaClasses.md'
+  - "4. Diagrama de seqüència": '4.DiagramesSequencia.md'
+  - "5. Diagrama de Components": '5.DiagramaComponents.md'
+  #- "6. Metodologies àgils i UML": '6.UMLAgil.md'
+  #- "7. Casos pràctics":
+  #  - "7.1. El Just Eat Pizza: Sprint 1": '7.Exercicis.md'
+  #  - "7.2. El Just Eat Pizza: Sprint 2": '8.Sprint2.md'
+  #  - "7.3. El Just Eat Pizza: Sprint 3": '9.Sprint3.md'
+  #  - "7.4. El Just Eat Pizza: Sprint 4": '10.Sprint4.md'
+  
+  
+theme:
+  name: 'material'
+  custom_dir: 'overrides'
+  logo: 'img/logo.svg'
+  favicon: 'img/logo.svg'
+  features:
+    - content.code.copy # Per copiar codi
+  palette:
+    accent: deep purple
+    primary: amber
+
+
+extra_css:
+  - https://joamuran.net/curs24_25/css/material-just.css
+
+plugins:
+  - search
+  - glightbox   # Per vore les imatges en gran quan fas clic en elles.
+  #- plantuml:
+  #    puml_url: https://www.plantuml.com/plantuml/
+  #    puml_keyword: plantuml # Per defecte puml
+  - mkdocs_jarplantuml:
+     plantuml_jar: devtools/plantuml-1.2025.0.jar
+     output_format: svg
+     output_dir: diagrames
+
+markdown_extensions:
+  - attr_list           # Permet incorporar atributs a les imatges { width=100px }
+  - md_in_html # Junt a attr_list per afegir peus a les imatges
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      baselevel: 2
+      toc_depth: 3
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
