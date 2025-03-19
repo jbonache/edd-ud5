@@ -1,0 +1,603 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../img/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>Sprint1 Pizzes - Anàlisi i Disseny Orientat a Objectes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#resolucio-de-lsprint-1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Anàlisi i Disseny Orientat a Objectes" class="md-header__button md-logo" aria-label="Anàlisi i Disseny Orientat a Objectes" data-md-component="logo">
+      
+  <img src="../img/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Anàlisi i Disseny Orientat a Objectes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sprint1 Pizzes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Anàlisi i Disseny Orientat a Objectes" class="md-nav__button md-logo" aria-label="Anàlisi i Disseny Orientat a Objectes" data-md-component="logo">
+      
+  <img src="../img/logo.svg" alt="logo">
+
+    </a>
+    Anàlisi i Disseny Orientat a Objectes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.UML/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. UML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.DiagramesCasosUs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Diagrama de casos d'us
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.DiagramaClasses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Diagrama de classes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.DiagramesSequencia/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Diagrama de seqüència
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.DiagramaComponents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Diagrama de Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#resolucio-de-lsprint-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resolució de l'sprint 1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resolució de l&#39;sprint 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-casos-dus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de casos d'ús
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cas-dus-rf01" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cas d'ús: RF01
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-classes-en-plantuml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de classes en PlantUML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-sequencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de seqüència
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>Sprint1 Pizzes</h1>
+
+<h2 id="resolucio-de-lsprint-1">Resolució de l'sprint 1</h2>
+<h3 id="diagrama-de-casos-dus">Diagrama de casos d'ús</h3>
+<p>El diagrama de casos d'ús per al cas "Consultar Pizzes" mostrarà <strong>l'actor principal (el client)</strong> i les interaccions amb el sistema per realitzar aquesta acció.</p>
+<p>Es tractaria d'un diagrama bastant simple:</p>
+<p><a class="glightbox" href="../diagrames/Sprint1_Pizzes/diagram_3415324684439306813.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint1_Pizzes/diagram_3415324684439306813.svg" /></a></p>
+<p>L'especificació dels requeriments funcionals d'aquest cas d'ús tindrà el següent aspecte:</p>
+<h3 id="cas-dus-rf01">Cas d'ús: RF01</h3>
+<ul>
+<li><strong>Nom:</strong> Consultar Pizzes  </li>
+<li><strong>Actors:</strong> Client</li>
+<li><strong>Descripció:</strong> El client consulta el menú de pizzes disponibles a través de la interfície web.  </li>
+<li><strong>Precondicions:</strong> El client ha d'accedir a la web.  </li>
+<li><strong>Postcondicions:</strong> Es mostra la llista de pizzes o un missatge d'error si hi ha algun problema.  </li>
+</ul>
+<h4 id="flux-principal">Flux principal</h4>
+<ol>
+<li>El client accedeix al sistema mitjançant el navegador.  </li>
+<li>El sistema mostra la llista de pizzes disponibles.  </li>
+</ol>
+<h4 id="fluxos-alternatius-excepcions">Fluxos alternatius (excepcions)</h4>
+<ul>
+<li><strong>Error de connexió:</strong> El sistema mostra un missatge d'error si no es pot contactar amb el servidor.  </li>
+<li><strong>Llista buida:</strong> Si no hi ha pizzes disponibles, s’informa l'usuari que el menú està buit.  </li>
+</ul>
+<h3 id="diagrama-de-classes">Diagrama de classes</h3>
+<p>El <strong>diagrama de classes</strong> ens permet identificar les classes necessàries per implementar el cas d'ús "Consultar Pizzes" i les relacions entre elles.</p>
+<p>Després d'analitzar el cas d'ús, identifiquem les següents classes:</p>
+<h4 id="1-classes-del-model-domini"><strong>1. Classes del model (domini)</strong></h4>
+<ul>
+<li><strong><code>Pizza</code></strong>: Representa una pizza amb les seues característiques.  </li>
+<li><strong><code>PizzaService</code></strong>: Gestiona la comunicació amb el servidor per obtenir la llista de pizzes.</li>
+</ul>
+<h4 id="2-classes-de-la-interficie-webcomponents"><strong>2. Classes de la interfície (WebComponents)</strong></h4>
+<ul>
+<li><strong><code>PizzaCard</code></strong>: WebComponent que representa visualment una pizza.  </li>
+<li><strong><code>PizzaList</code></strong>: WebComponent que s'encarrega de mostrar la llista de pizzes rebuda.</li>
+<li><strong><code>LlistaAlergens</code></strong>: Per representar amb una etiqueta el que serà una llista d'imatges amb els diferents alergens.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Notes</p>
+<ul>
+<li>Les classes d'interfície es poden incloure en el diagrama general o bé en un diagrama específic d'interfície d'usuari. En aquest cas, les inclourem per entendre la interacció amb el model.  </li>
+<li>Per al diagrama de classes ens centrarem en la part del client, abstraient tota la part del servidor.</li>
+</ul>
+</div>
+<h3 id="diagrama-de-classes-en-plantuml">Diagrama de classes en PlantUML</h3>
+<p><a class="glightbox" href="../diagrames/Sprint1_Pizzes/diagram_4549831931190272506.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint1_Pizzes/diagram_4549831931190272506.svg" /></a></p>
+<h4 id="que-hem-representat-aci"><strong>Què hem representat aci?</strong></h4>
+<ol>
+<li><strong>Model de dades:</strong> <code>Pizza</code> representa el model amb els seus atributs.  </li>
+<li><strong>Gestió de la lògica de negoci:</strong>  <code>PizzaService</code> encapsula la lògica per a la consulta de pizzes.</li>
+<li><strong>Interfície d'usuari:</strong> <code>PizzaCard</code> gestiona la presentació.  Com veiem, aquesta utilitza la classe Pizza, i és una subclasse d'<code>HTMLElement</code>.</li>
+</ol>
+<p>Tingueu en compte que hem definit una entitat <em>Main</em> que realment vam implementar com un script. Ara bé, això podria implementar-se com una classe, i seguir un model completament orientat a objectes.</p>
+<h3 id="diagrama-de-sequencia">Diagrama de seqüència</h3>
+<p>Aquest diagrama mostrarà la seqüència d'interaccions necessària perquè el client puga consultar les pizzes disponibles. </p>
+<p>El flux de la seqüència serà el següent:</p>
+<ol>
+<li>El client carrega la pàgina i el codi de main.js inicia el procés.</li>
+<li>PizzaService fa una crida a l'API REST del Servidor.</li>
+<li>El Servidor consulta la base de dades i retorna la llista de pizzes.</li>
+<li>El PizzaService processa les dades i les retorna a main.js.</li>
+<li>main.js crea dinàmicament un PizzaCard per a cada pizza i l'insereix al DOM.</li>
+<li>Cada PizzaCard mostra la informació de la pizza i, si cal, genera una llista d'alèrgens amb PizzaLlistaAlergens (això serà en properes iteracions).</li>
+</ol>
+<p><a class="glightbox" href="../diagrames/Sprint1_Pizzes/diagram_4584326765100442661.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint1_Pizzes/diagram_4584326765100442661.svg" /></a></p>
+<p><strong>Observeu que s'ha afegit el renderitzat de la llista d'alèrgens, que haureu d'implementar vosaltres</strong></p>
+<h3 id="diagrama-de-components">Diagrama de components</h3>
+<p>El <strong>diagrama de components</strong> ens ajuda a visualitzar l'arquitectura del sistema i la interacció entre els diferents mòduls que el conformen. En aquest cas, reflectirem:  </p>
+<ul>
+<li>L'aplicació client basada en <strong>WebComponents</strong>.  </li>
+<li>El servei de comunicació amb l'API.  </li>
+<li>La interacció amb el servidor.  </li>
+</ul>
+<p>Els components principals de què constarà doncs l'aplicació seran:</p>
+<ol>
+<li><strong>Mòdul <code>main.js</code>:</strong>  </li>
+<li>Punt d'entrada de l'aplicació.  </li>
+<li>
+<p>Gestiona la creació dinàmica dels components.  </p>
+</li>
+<li>
+<p><strong>Mòdul <code>PizzaService</code>:</strong>  </p>
+</li>
+<li>
+<p>Gestiona la comunicació amb el servidor via <code>fetch</code>.  </p>
+</li>
+<li>
+<p><strong>Components WebComponents:</strong>  </p>
+</li>
+<li><strong><code>PizzaCard</code>:</strong> Mostra les dades de cada pizza.  </li>
+<li>
+<p><strong><code>PizzaLlistaAlergens</code>:</strong> Mostra gràficament els alèrgens.  </p>
+</li>
+<li>
+<p><strong>API del servidor:</strong>  </p>
+</li>
+<li>Serveix les dades a través d'una crida <code>GET</code>.  </li>
+</ol>
+<p>El diagrama resultant serà:</p>
+<p><a class="glightbox" href="../diagrames/Sprint1_Pizzes/diagram_232200707335117390.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint1_Pizzes/diagram_232200707335117390.svg" /></a></p>
+<p>Com veiem, la part client conté bàsicament com a components les classes que hem generat anteriorment, i s'interactúa ambel sistema del servidor a través de l'API.</p>
+<div class="admonition note">
+<p class="admonition-title">Implementació</p>
+<p><a href="https://joamuran.net/curs24_25/lmi/u3_webcomponents/sprint1/">Consulteu la implementació d'aquest sprint</a></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

@@ -1,0 +1,585 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../img/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>9.Sprint3 - Anàlisi i Disseny Orientat a Objectes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sprint-3-afegir-un-carret-de-la-compra" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Anàlisi i Disseny Orientat a Objectes" class="md-header__button md-logo" aria-label="Anàlisi i Disseny Orientat a Objectes" data-md-component="logo">
+      
+  <img src="../img/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Anàlisi i Disseny Orientat a Objectes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              9.Sprint3
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Anàlisi i Disseny Orientat a Objectes" class="md-nav__button md-logo" aria-label="Anàlisi i Disseny Orientat a Objectes" data-md-component="logo">
+      
+  <img src="../img/logo.svg" alt="logo">
+
+    </a>
+    Anàlisi i Disseny Orientat a Objectes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.UML/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. UML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.DiagramesCasosUs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Diagrama de casos d'us
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.DiagramaClasses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Diagrama de classes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.DiagramesSequencia/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Diagrama de seqüència
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.DiagramaComponents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Diagrama de Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sprint-3-afegir-un-carret-de-la-compra" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sprint 3. Afegir un carret de la compra
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sprint 3. Afegir un carret de la compra">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-casos-dus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de casos d'ús
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cas-dus-rf03-afegir-producte-al-carret" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cas d'ús: RF03 - Afegir producte al carret
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cas-dus-rf04-eliminar-producte-del-carret" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cas d'ús: RF04 - Eliminar producte del carret
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cas-dus-rf05-consultar-el-carret" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cas d'ús: RF05 - Consultar el carret
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-sequencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de seqüència
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>9.Sprint3</h1>
+
+<h2 id="sprint-3-afegir-un-carret-de-la-compra">Sprint 3. Afegir un carret de la compra</h2>
+<p>En aquest sprint anem a afegir una nova funcionalitat i incorporar un carret de la compra, que ens permeta afegir i eliminar productes per fer un encàrrec. Es podran consultar els productes del carret i modificar-ne la seua quantitat des del mateix carret</p>
+<p>A més, a la part superior, junt amb el títol de l'aplicació, apareixerà informació del carret, on es mostrarà la quantitat de productes que hi ha i el preu total de l'encàrrec.</p>
+<h3 id="diagrama-de-casos-dus">Diagrama de casos d'ús</h3>
+<p>Les dues accions principals que aportarà aquest sprint seran <strong>afegir un producte</strong> i <strong>eliminar un producte</strong>.</p>
+<p><a class="glightbox" href="../diagrames/9.Sprint3/diagram_8606080462784713489.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/9.Sprint3/diagram_8606080462784713489.svg" /></a></p>
+<p>L'especificació dels requeriments funcionals d'aquests casos d'ús és la següent:</p>
+<h3 id="cas-dus-rf03-afegir-producte-al-carret">Cas d'ús: RF03 - Afegir producte al carret</h3>
+<ul>
+<li><strong>Nom:</strong> Afegir producte al carret</li>
+<li><strong>Actors:</strong> Client</li>
+<li><strong>Descripció:</strong> El client fa clic al botó (+) d’un producte (tant des de la pestanya de productes com des del carret) i aquest s’afegeix al carret de la compra.</li>
+<li><strong>Precondicions:</strong> El client ha d'accedir a la web i veure el menú de productes.</li>
+<li><strong>Postcondicions:</strong> El producte s'afegeix al carret i s'actualitza la quantitat i el preu total a la barra del títol.</li>
+</ul>
+<h4 id="flux-principal">Flux principal</h4>
+<ol>
+<li>El client visualitza la llista de productes o el carret.</li>
+<li>El client fa clic al botó (+) d'un producte.</li>
+<li>El sistema afegeix el producte al carret.</li>
+<li>La quantitat i el preu total s’actualitzen a la barra del títol.</li>
+</ol>
+<h4 id="fluxos-alternatius-excepcions">Fluxos alternatius (excepcions)</h4>
+<ul>
+<li><strong>Error en l’operació:</strong> Si hi ha un problema afegint productes, es mostra un missatge d'error.</li>
+</ul>
+<h3 id="cas-dus-rf04-eliminar-producte-del-carret">Cas d'ús: RF04 - Eliminar producte del carret</h3>
+<ul>
+<li><strong>Nom:</strong> Eliminar producte del carret</li>
+<li><strong>Actors:</strong> Client</li>
+<li><strong>Descripció:</strong> El client pot eliminar un producte del carret des de dues ubicacions:</li>
+<li>Directament des del llistat de productes (pizzes o entrants) fent clic al botó <code>-</code>.</li>
+<li>Des de la pestanya del carret, on pot reduir unitats o eliminar un producte completament.</li>
+<li><strong>Precondicions:</strong> Ha d’haver almenys una unitat del producte al carret.</li>
+<li><strong>Postcondicions:</strong> La quantitat i el preu total s'actualitzen a la barra del títol. Si el producte arriba a 0 unitats, desapareix del carret.</li>
+</ul>
+<h4 id="flux-principal_1">Flux principal</h4>
+<ol>
+<li>El client visualitza la llista de productes o el carret.</li>
+<li>El client fa clic al botó (-) d'un producte.</li>
+<li>El sistema redueix la quantitat d’aquell producte en el carret.</li>
+<li>La quantitat i el preu total s’actualitzen a la barra del títol.</li>
+<li>Si la quantitat arriba a 0, el producte s’elimina del carret.</li>
+</ol>
+<h4 id="fluxos-alternatius-excepcions_1">Fluxos alternatius (excepcions)</h4>
+<ul>
+<li><strong>Error en l’operació:</strong> Si hi ha un problema en la reducció, es mostra un missatge d'error.</li>
+</ul>
+<h3 id="cas-dus-rf05-consultar-el-carret">Cas d'ús: RF05 - Consultar el carret</h3>
+<ul>
+<li><strong>Nom</strong>: Consultar el carret</li>
+<li><strong>Actors</strong>: Client</li>
+<li><strong>Descripció</strong>: El client pot accedir a la pestanya del carret per veure els productes afegits, la seua quantitat i el preu total.</li>
+<li><strong>Precondicions</strong>: Ha d'haver almenys un producte al carret per a mostrar informació.</li>
+<li><strong>Postcondicions</strong>: Es mostra la llista de productes amb la seua quantitat i el preu total.</li>
+</ul>
+<h4 id="flux-principal_2">Flux principal</h4>
+<ol>
+<li>El client accedeix a la pestanya del carret.</li>
+<li>El sistema mostra la llista de productes afegits.</li>
+<li>Es visualitzen la quantitat de cada producte i el preu total de la comanda.</li>
+</ol>
+<h4 id="fluxos-alternatius-excepcions_2">Fluxos alternatius (excepcions)</h4>
+<ul>
+<li><strong>El carret està buit</strong>: Es mostra un missatge indicant que el client encara no ha afegit productes.</li>
+</ul>
+<h3 id="diagrama-de-classes">Diagrama de classes</h3>
+<p>Veiem la part del diagrama de classes que es correspondrà només a aquesta cas d'ús. En ell veiem l'estructura del carret, com es relaciona amb els productes, i com es representa amb un component.</p>
+<p><a class="glightbox" href="../diagrames/9.Sprint3/diagram_8913286054847627575.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/9.Sprint3/diagram_8913286054847627575.svg" /></a></p>
+<h3 id="diagrama-de-sequencia">Diagrama de seqüència</h3>
+<p>Aquest diagrama mostra la interacció entre l’usuari, el carret i la interfície quan es realitza una acció d’afegir o eliminar un producte al carret.</p>
+<p><a class="glightbox" href="../diagrames/9.Sprint3/diagram_2181897051934236948.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/9.Sprint3/diagram_2181897051934236948.svg" /></a></p>
+<h3 id="diagrama-de-components">Diagrama de components</h3>
+<p>Aquest diagrama mostra la relació entre els diferents components del sistema, incloent el fet que <code>ProducteCard</code> també interactua amb el carret.</p>
+<p><a class="glightbox" href="../diagrames/9.Sprint3/diagram_4435254536730200695.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/9.Sprint3/diagram_4435254536730200695.svg" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Implementació</p>
+<p><a href="https://joamuran.net/curs24_25/lmi/u3_webcomponents/sprint3/">Consulteu la implementació d'aquest sprint</a></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

@@ -1,0 +1,1034 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../1.UML/">
+      
+      
+        <link rel="next" href="../3.DiagramaClasses/">
+      
+      
+      <link rel="icon" href="../img/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>2. Diagrama de casos d'us - Anàlisi i Disseny Orientat a Objectes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#diagrames-de-casos-dus" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Anàlisi i Disseny Orientat a Objectes" class="md-header__button md-logo" aria-label="Anàlisi i Disseny Orientat a Objectes" data-md-component="logo">
+      
+  <img src="../img/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Anàlisi i Disseny Orientat a Objectes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Diagrama de casos d'us
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Anàlisi i Disseny Orientat a Objectes" class="md-nav__button md-logo" aria-label="Anàlisi i Disseny Orientat a Objectes" data-md-component="logo">
+      
+  <img src="../img/logo.svg" alt="logo">
+
+    </a>
+    Anàlisi i Disseny Orientat a Objectes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.UML/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. UML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    2. Diagrama de casos d'us
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    2. Diagrama de casos d'us
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#diagrames-de-casos-dus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrames de casos d'ús
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elements-dun-diagrama-de-casos-dus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elements d'un diagrama de casos d'ús
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Elements d&#39;un diagrama de casos d&#39;ús">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#casos-dus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Casos d'ús
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relacions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-un-carret-de-la-compra" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple: Un carret de la compra
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#descripcio-dels-requeriments-funcionals-i-no-funcionals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descripció dels requeriments funcionals i no funcionals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Descripció dels requeriments funcionals i no funcionals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dibuixant-diagrames-de-casos-dus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dibuixant diagrames de casos d'ús
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercicis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercicis
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.DiagramaClasses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Diagrama de classes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.DiagramesSequencia/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Diagrama de seqüència
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.DiagramaComponents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Diagrama de Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#diagrames-de-casos-dus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrames de casos d'ús
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elements-dun-diagrama-de-casos-dus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elements d'un diagrama de casos d'ús
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Elements d&#39;un diagrama de casos d&#39;ús">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#casos-dus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Casos d'ús
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relacions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-un-carret-de-la-compra" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple: Un carret de la compra
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#descripcio-dels-requeriments-funcionals-i-no-funcionals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descripció dels requeriments funcionals i no funcionals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Descripció dels requeriments funcionals i no funcionals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dibuixant-diagrames-de-casos-dus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dibuixant diagrames de casos d'ús
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercicis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercicis
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>2. Diagrama de casos d'us</h1>
+
+<h2 id="diagrames-de-casos-dus">Diagrames de casos d'ús</h2>
+<p>Els diagrames de casos d'ús són els diagrames més coneguts d'UML i representen els diferents actors externs que interactuen amb el sistema d'informació, i a través de quines funcionalitats (casos d'ús o requeriments funcionals) es relacionen amb ell.</p>
+<p>És a dir, aquests diagrames <strong>ens mostraran de manera visual les diferents funcions que pot realitzar cada tipus d'usuari d'un sistema d'informació</strong>.</p>
+<p>Les finalitats dels diagrames de casos d'ús poden ser diverses, i entre elles podem trobar:</p>
+<ul>
+<li>Representar els <em>requeriments funcionals</em> del sistema (què volem que faça).</li>
+<li>Representar els <em>actors</em> que es comuniquen amb el sistema. Aquests actors seran bé usuaris (perfils d'usuaris més concretament) o altres sistemes externs.</li>
+<li>Representar la relació entre els <em>requeriments funcionals</em>  i els <em>actors</em>.</li>
+<li>Guiar el desenvolupament del sistema, donant-nos un punt de partida sobre què començar a desenvolupar.</li>
+<li>Facilitar la comunicació precisa entre client i desenvolupador, simplificant la forma en què tots puguen participar en l'elaboració dels requeriments del sistema, inclosos els clients.</li>
+</ul>
+<h2 id="elements-dun-diagrama-de-casos-dus">Elements d'un diagrama de casos d'ús</h2>
+<p>Els diagrames de casos d'ús es componen de tres elements principals: els actors, els casos d'ús i les relacions.</p>
+<h3 id="actors">Actors</h3>
+<p>Els actors són entitats, ja siguen persones o no, externes al sistema, i que interactuen amb ell de forma directa. Aquesta interacció es tradueix en que aporten o reben informació, que realitzen una acció, etc.</p>
+<p>Els actors es representen de forma senzilla com un <em>monigot</em> (no he trobat altra definició més clara), amb el nom de l'actor al davall:</p>
+<p><a class="glightbox" href="../img/actor.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple d'actor" src="../img/actor.png" width="100px" /></a></p>
+<p>Com hem dit, distingim dos tipus d'actors: usuaris i sistemes. A més, els usuaris no són usuaris concrets, sinó tipus, rols o perfils d'usuari (usuari, administrador, gerent, gestor, etc.). Pel que fa als actors que són sistemes, aquests poden ser, per exemple, sistemes de gestió de bases de dades o el sistema de fitxers on emmagatzemem informació. En ocasions, quan es tracta d'actors que són <em>altres sistemes</em>, no s'utilitza la notació del <em>ninot</em>, per ser poc intuïtiva.</p>
+<p><strong>Representació d'actors en Mermaid i PlantUML</strong></p>
+<p>En Mermaid i PlantUML representem els actors de la següent forma:</p>
+<ul>
+<li><strong>Mermaid</strong>:</li>
+</ul>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="sb">```mermaid</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="s">graph TD</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="s">    A[Actor]</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="sb">```</span>
+</span></code></pre></div>
+<pre class="mermaid"><code>graph TD
+    A[Actor]</code></pre>
+<ul>
+<li><strong>PlantUML</strong></li>
+</ul>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>``` plantuml
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="ni">@startuml</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>:Actor:
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="ni">@enduml</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>```
+</span></code></pre></div>
+<p><a class="glightbox" href="../diagrames/2.DiagramesCasosUs/diagram_4992198813413225630.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/2.DiagramesCasosUs/diagram_4992198813413225630.svg" /></a></p>
+<h3 id="casos-dus">Casos d'ús</h3>
+<p>Un cas d'ús <strong>representa una funcionalitat (<em>o unitat de funcionalitat completa</em>) que realitza el sistema</strong>, i es tracta d'una seqüència d'accions que fa el sistema i que produeixen un resultat que puga percebre i siga d'utilitat per a algun dels actors.</p>
+<p>La seua representació gràfica és una el·lipse, amb el nom del cas d'ús a dins. Com hem dit, són accions que realitzarà el sistema; alguns exemples poden ser:  "Realitzar Comanda", "Llistar productes", "Enviar missatge".</p>
+<p>Abans de l'especificació d'UML 2.5 els casos d'ús els havia d'invocar un actor. A partir de la versió 2.5, es contempla que algunes funcionalitats del sistema les inicie el propi sistema, i al mateix temps, oferisca resultats útils al client (per exemple, accions periòdiques que realitze el sistema de forma automàtica, com comprovar si hi ha correus nous o actualitzar informació meteorològica).</p>
+<p><strong>Casos d'ús en Mermaid i PlantUML</strong></p>
+<ul>
+<li><strong>Mermaid</strong></li>
+</ul>
+<p><div class="language-markdown highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="sb">```mermaid</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="s">graph TD</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="s">    U((Cas d&#39;ús))</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="sb">```</span>
+</span></code></pre></div>
+<pre class="mermaid"><code>graph TD
+    U((Cas d'ús))</code></pre></p>
+<ul>
+<li><strong>PlantUML</strong>:</li>
+</ul>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>``` plantuml
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="ni">@startuml</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>(Realitzar Comanda)
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="ni">@enduml</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>```
+</span></code></pre></div>
+<p><a class="glightbox" href="../diagrames/2.DiagramesCasosUs/diagram_6442099536186499433.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/2.DiagramesCasosUs/diagram_6442099536186499433.svg" /></a></p>
+<h3 id="relacions">Relacions</h3>
+<p>Les relacions <strong>connecten els casos d'ús amb els actors, o els casos d'ús entre si</strong>.</p>
+<p>Aquestes <em>connexions</em> representen la interacció entre l'actor i el cas d'ús, i sol representar-se amb una línia contínua amb la identificació <code>&lt;&lt;comunicates&gt;&gt;</code>.</p>
+<p>Quan connectem casos d'ús entre ells podem diferenciar dos tipus de relacions: <code>&lt;&lt;include&gt;&gt;</code> i <code>&lt;&lt;extend&gt;&gt;</code> (o bé les traduccions <code>&lt;&lt;usa&gt;&gt;</code> i <code>&lt;&lt;estén&gt;&gt;</code>):</p>
+<ul>
+<li>
+<p><code>&lt;&lt;include&gt;&gt;</code>: Indica que un cas d'ús utilitza sempre altre cas d'ús obligatòriament. Es representa amb una fletxa discontínua, que va des del cas d'ús d'origen al cas d'ús que s'inclou.</p>
+</li>
+<li>
+<p><code>&lt;&lt;extend&gt;&gt;</code>: S'utilitza quan un cas d'us té un comportament opcional que està contemplat en altre cas d'ús. Es representa amb una fletxa discontínua, des del cas d'ús opcional a l'original.</p>
+</li>
+</ul>
+<p>A més, hi ha altre tipus de relació anomenada <em>generalització</em>, consistent a que un element hereta el comportament d'un altre. Tot i que podem utilitzar-ho en casos d'ús, el més habitual és fer-ho entre actors, per exemple, per indicar que un usuari administrador d'una aplicació també pot ser usuari corrent, i heretar les funcionalitats d'aquest.</p>
+<p><strong>Relacions en Mermaid i PlantUML</strong></p>
+<p><strong>Mermaid</strong></p>
+<p>Mermaid no disposa d'elements específics pe a expressar relacions entre actors i entitats, sinò que fa ús de connexions. </p>
+<ul>
+<li>Per tal d'indicar una fletxa contínua, quan un <em>Actor</em> es relaciona amb un cas d'ús, fem ús de <code>--&gt;</code>.</li>
+<li>Per tal d'indicar fletxes discontínues entre casos d'ús fem ús de <code>-..-&gt;</code>. </li>
+<li>A més, a dins la fletxa podem incorporar anotacions, que en el cas de les relacions entre casos d'ús ens serviran per indicar el tipus, si és <em>use</em>, <em>extends</em> o <em>include</em>, amb <code>-.use.-&gt;</code>, <code>-.extend.-&gt;</code> i <code>-.use.-&gt;</code> (sense espais).</li>
+</ul>
+<p>Veiem un exemple:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="sb">```mermaid</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="s">graph LR</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="s">    Actor --&gt; Cas1((Cas d&#39;ús 1))</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="s">    Cas1 - .include.-&gt; Cas2((Cas d&#39;ús 2))</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="s">    Cas3((Cas d&#39;ús 3)) - .extend.-&gt; Cas2</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="sb">```</span>
+</span></code></pre></div>
+<pre class="mermaid"><code>graph LR
+    Actor --&gt; Cas1((Cas d'ús 1))
+    Cas1 -.include.-&gt; Cas2((Cas d'ús 2))
+    Cas3((Cas d'ús 3)) -.extend.-&gt; Cas2</code></pre>
+<p>PlantUML, per la seua banda, sí que aporta una major riquesa expressiva. En aquest cas:</p>
+<ul>
+<li>Les relacions entre actors i casos d'ús s'expressen amb <code>--&gt;</code>.</li>
+<li>Les relacions entre casos d'ús, si són d'inclussió (<em>includes</em>) s'expressen amb <code>.&gt;</code>. A més, podem afegir al final l'etiquea <code>&lt;&lt;include&gt;&gt;</code>, per indicar que un cas d'ús sempre utilitza un altre cas d'ús com a part del seu comportament.</li>
+<li>Les relacions d'extensió (<em>extends</em>) entre casos d'ús s'expressen amb <code>..&gt;</code>. A més, podem incloure l'etiqueta <code>&lt;&lt;extends&gt;&gt;</code> al final.</li>
+</ul>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>``` plantuml
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="ni">@startuml</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>:Actor: --&gt; (Cas d&#39;ús 1)
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>(Cas d&#39;ús 1) .&gt; (Cas d&#39;ús 2) : &lt;&lt;include&gt;&gt;
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>(Cas d&#39;ús 3) ..&gt; (Cas d&#39;ús 2) : &lt;&lt;extend&gt;&gt;
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="ni">@enduml</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>```
+</span></code></pre></div>
+<p><a class="glightbox" href="../diagrames/2.DiagramesCasosUs/diagram_6594850890730156838.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/2.DiagramesCasosUs/diagram_6594850890730156838.svg" /></a></p>
+<h3 id="exemple-un-carret-de-la-compra">Exemple: Un carret de la compra</h3>
+<p>El següent diagrama de casos d'ús mostra els elements vistos anteriorment en el context d'una aplicació típica de <em>carret de la compra</em> en una plataforma de compres <em>on-line</em>.</p>
+<p><a class="glightbox" href="../img/casosUs.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple de casos d'ús" src="../img/casosUs.png" width="400px" /></a></p>
+<p>Com veiem, tenim dos classes d'actors: <code>Client</code> i <code>Encarregat</code>, sent el segon un cas especial del primer, ja que un encarregat de la plataforma pot ser també un client.</p>
+<p>Pel que fa als casos d'ús <em>associats</em> al <em>client</em>, se'ns mostren dos:
+* <code>Afig producte</code> <em>al carret de la compra</em>, i
+* <code>Realitza encàrrec</code>, una vegada el client té el carret preparat. Per tal de poder realitzar efectivament l'encàrrec, cal que el client es valide de nou, pel que aquest cas d'ús fa ús (<code>&lt;&lt;includes&gt;&gt;</code>) del cas <code>Valida usuari</code>.</p>
+<p>Per la seua banda, l'actor <em>Encarregat</em>, té associat el cas d'ús:</p>
+<ul>
+<li><code>Preparar Encàrrec</code>, que requerirà, una vegada s'envie el paquet a l'usuari notificar aquest bé a través de correu electrònic o bé pe SMS. Per a això, apareixen dos casos nous d'ús <code>Enviar correu</code> i <code>Enviar SMS</code>, que seran opcionals (<code>&lt;&lt;extend&gt;&gt;</code>).</li>
+</ul>
+<h4 id="exemple-amb-mermaid">Exemple amb Mermaid</h4>
+<p>Veiem aquest mateix exemple com es podria expressar amb Mermaid:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="sb">```mermaid</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="s">graph LR</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="s">    Client[Client] --&gt; AfigProducte((Afig producte))</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="s">    Client --&gt; RealitzaEncarrec((Realitza encàrrec))</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="s">    Encarregat -..-&gt;|Generalització| Client</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="s">    RealitzaEncarrec - .include.-&gt; ValidaUsuari((Valida usuari))</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="s">    Encarregat[Encarregat] --&gt; PrepararEncarrec((Preparar encàrrec))</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="s">        EnviarCorreu((Enviar correu)) --.extend.-&gt; PrepararEncarrec</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="s">    EnviarSMS((Enviar SMS)) - .extend.-&gt; PrepararEncarrec</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="sb">```</span>
+</span></code></pre></div>
+<p>Com veiem, <em>Mermaid</em> defineix el diagrama com un diagrama de Flux (<code>graph</code>), ja que no disposa d'un tipus de diagrama específic per a casos d'ús.</p>
+<p>En aquest diagrama, els nodes defineixen tant els actors com els casos d'ús, i es distingeixen pel seu estil visual, de la següent manera:</p>
+<ul>
+<li>Els nodes que defineixen un actor s'expressen com a <code>Actor[Actor]</code>. El primer element d'aquests és l'identificador del node, mentre que el segon, defineix l'estil visual, que en aquest cas és un rectangle.</li>
+<li>Per la seua banda, els casos d'ús s'expressen amb la notació <code>Cas((Cas))</code>, on <code>Cas</code> és l'identificador i <code>((Cas))</code> defineix l'estil visual com una el·lipsi.</li>
+</ul>
+<p>Pel que fa a les connexions:</p>
+<ul>
+<li>Les fletxes <code>--&gt;</code> indiquen connexions contínues entre nodes, i es mostraran com línies contínues.</li>
+<li>Les fletxes <code>-.-&gt;</code> i <code>-..-&gt;</code> es mostren com línies discontínues i expressen connexions entre nodes i generalitzacions. A més, en les línies discontínues, entre els punts, podem indicar etiquetes, per especificar el tipus de relació (<code>-.include.-&gt;</code>)</li>
+</ul>
+<p>El reultat d'aquest diagrama serà el següent:</p>
+<pre class="mermaid"><code>graph LR
+    Client[Client] --&gt; AfigProducte((Afig producte))
+    Client --&gt; RealitzaEncarrec((Realitza encàrrec))
+    Encarregat -..-&gt;|Generalització| Client
+    RealitzaEncarrec -.include.-&gt; ValidaUsuari((Valida usuari))
+
+    Encarregat[Encarregat] --&gt; PrepararEncarrec((Preparar encàrrec))
+        EnviarCorreu((Enviar correu)) -.extend.-&gt; PrepararEncarrec
+    EnviarSMS((Enviar SMS)) -.extend.-&gt; PrepararEncarrec</code></pre>
+<h4 id="exemple-amb-plantuml">Exemple amb PlantUML</h4>
+<p>Amb PlantUML el diagrama de casos d'ús s'expressaria així:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>``` plantuml
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="ni">@startuml</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>:Client: --&gt; (Afig producte)
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>:Client: --&gt; (Realitza encàrrec)
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>(Realitza encàrrec) .&gt; (Valida usuari) : &lt;&lt;include&gt;&gt;
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>:Encarregat: --&gt; (Preparar encàrrec)
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>(Enviar correu) ..&gt; (Preparar encàrrec) : &lt;&lt;extend&gt;&gt;
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>(Enviar SMS) ..&gt; (Preparar encàrrec) : &lt;&lt;extend&gt;&gt;
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>:Client:&lt;|--:Encarregat: 
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="ni">@enduml</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>```
+</span></code></pre></div>
+<p>Veiem els aspectes més rellevants de la sintaxi utilitzada aci:</p>
+<ul>
+<li><code>@startuml</code> i <code>@enduml</code>: indiquen l'inici i el final del diagrama.</li>
+<li>Definim els actors tancant l'identificador entre dos signes de dos punts, com <code>:Client:</code>.</li>
+<li>Els casos d'ús es defineixen entre parèntesis: <code>(Enviar SMS)</code></li>
+<li>Les relacions s'expressen amb fletxes, seguint el següent esquema:</li>
+<li></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Fletxa</th>
+<th>Significat</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--&gt;</code></td>
+<td>Connexió directa o associació entre un actor i un cas d'ús.</td>
+<td><code>:Client: --&gt; (Afig producte)</code></td>
+</tr>
+<tr>
+<td><code>.&gt;</code></td>
+<td>Relació <code>&lt;&lt;include&gt;&gt;</code> entre casos d'ús.</td>
+<td><code>(Realitza encàrrec) .&gt; (Valida usuari) : &lt;&lt;include&gt;&gt;</code></td>
+</tr>
+<tr>
+<td><code>..&gt;</code></td>
+<td>Relació <code>&lt;&lt;extend&gt;&gt;</code> entre casos d'ús.</td>
+<td><code>(Enviar correu) ..&gt; (Preparar encàrrec) : &lt;&lt;extend&gt;&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;\|--</code></td>
+<td>Generalització entre actors o casos d'ús.</td>
+<td><code>:Encarregat: &lt;\|-- :Client:</code></td>
+</tr>
+</tbody>
+</table>
+<p>El resultat serà el següent:</p>
+<p><a class="glightbox" href="../diagrames/2.DiagramesCasosUs/diagram_6327877748025071658.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/2.DiagramesCasosUs/diagram_6327877748025071658.svg" /></a></p>
+<p>A més, també podriem expressar el diagrama de la següent manera, definit primer els actors i casos d'ús amb <code>actor</code> i <code>usecase</code>i utilitzar Alias (<code>as</code>), i posteriorment, definir les relacions fen ús d'aquests àlias:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>``` plantuml
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="ni">@startuml</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>actor Client as C
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>actor Encarregat as E
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>usecase &quot;Afig Producte&quot; as AP
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>usecase &quot;Realitzar Encàrrec&quot; as RE
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>usecase &quot;Valid usuari&quot; as VU
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>usecase &quot;Preparar Encàrrec&quot; as PE
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>usecase &quot;Enviar correu&quot; as EC
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>usecase &quot;Enviar SMS&quot; as ES
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>C&lt;|--E 
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>C --&gt; AP
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>C--&gt;RE
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>RE .&gt; VU : &lt;&lt;include&gt;&gt;
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>E --&gt; PE
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>EC ..&gt; PE : &lt;&lt;extend&gt;&gt;
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>ES ..&gt; PE : &lt;&lt;extend&gt;&gt;
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="ni">@enduml</span>
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>```
+</span></code></pre></div>
+<p>Això ens permet, a més, definir agrupacions d'actors o casos d'ús, per exemple:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>``` plantuml
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="ni">@startuml</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>left to right direction
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>actor Client as C
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>actor Encarregat as E
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>package FuncionalitatClient {
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    usecase &quot;Afig Producte&quot; as AP
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>    usecase &quot;Realitzar Encàrrec&quot; as RE
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>    usecase &quot;Valid usuari&quot; as VU
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>}
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>package FuncionalitatEncarregat{
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>    usecase &quot;Preparar Encàrrec&quot; as PE
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>    usecase &quot;Enviar correu&quot; as EC
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>    usecase &quot;Enviar SMS&quot; as ES
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>}
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>C&lt;|--E 
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>C --&gt; AP
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>C--&gt;RE
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>RE .&gt; VU : &lt;&lt;include&gt;&gt;
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>E --&gt; PE
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>EC ..&gt; PE : &lt;&lt;extend&gt;&gt;
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>ES ..&gt; PE : &lt;&lt;extend&gt;&gt;
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="ni">@enduml</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>```
+</span></code></pre></div>
+<p>Com veiem, hem fet ús de <code>package {...}</code> per agrupar casos d'ús, i distingir la funcionalitat del client i la de l'encarregat en paquets diferents.</p>
+<p>A més, també hem fet ús de la directiva <code>left to right direction</code>, que intenta dibuixar els diferents elements d'esquerra a dreta.</p>
+<p>El resultat és aquest:</p>
+<p><a class="glightbox" href="../diagrames/2.DiagramesCasosUs/diagram_5884259567674161523.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/2.DiagramesCasosUs/diagram_5884259567674161523.svg" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Més informació...</p>
+<ul>
+<li>Al lloc web de <em>DiagramasUML</em> podeu trobar una guia per tal d'identificar possibles actors i casos d'ús d'un sistema: <a href="https://diagramasuml.com/identificar-actores-y-casos-de-uso/">https://diagramasuml.com/identificar-actores-y-casos-de-uso/</a>.</li>
+<li>La <a href="https://plantuml.com/use-case-diagram">documentació oficial de PlantUML</a> ens ofereix informació molt més detallada i completa sobre la creació de diagrames de casos d'ús.</li>
+</ul>
+</div>
+<h2 id="descripcio-dels-requeriments-funcionals-i-no-funcionals">Descripció dels requeriments funcionals i no funcionals</h2>
+<p>Quan definim els casos d'ús, és habitual descriure cada cas d'ús com una seqüència de passos que cal fer per completar-lo, i les possibles excepcions que poden haver.</p>
+<p>Per a cada cas d'ús, tindrem un document, en forma de taula on es plasmen els diferents requeriments d'aquest. Aquests requeriments podran ser <strong>funcionals</strong> i <strong>no funcionals</strong>. </p>
+<div class="admonition note">
+<p class="admonition-title">Requisits funcionals i no funcionals</p>
+<p>Els <strong>requisits funcionals</strong> descriuen les accions o funcions que el sistema ha de ser capaç de realitzar per satisfer les necessitats dels usuaris, com afegir productes al carret o enviar notificacions.
+Els <strong>requisits no funcionals</strong> fan referència a les especificacions de qualitat o limitacions que afecten el rendiment, la seguretat, la usabilitat o altres aspectes operatius del sistema, com la velocitat de resposta o el nivell de seguretat requerit. Per exemple, podría ser que les transaccions i les comunicacions de xarxa es realitzaren de forma segura.</p>
+</div>
+<p>A més dels requeriments, en la descripció dels casos d'ús podem tindre la següent informació:</p>
+<ul>
+<li><strong>Identificador i nom descriptiu</strong></li>
+<li><strong>Descripció</strong> del cas d'ús</li>
+<li><strong>Actors implicats</strong></li>
+<li><strong>Precondicions</strong>: Expressem en llenguatge natural les condicions necessàries per a que es puga realitzar el cas d'ús.</li>
+<li><strong>Seqüència normal</strong> de les interaccions del cas d'ús. En cada pas, l'actor o el sistema realitzarà una o més accions, o es realitzarà altre cas d'ús.</li>
+<li><strong>Postcondició</strong>: Expressem en llenguatge natural les condicions que s'han de complir després de finalitzar el cas d'ús de forma normal.</li>
+<li><strong>Excepcions</strong>: Especifica el comportament del sistema en cas que es produïsca una situació excepcional en algun pas.</li>
+</ul>
+<h3 id="exemple">Exemple</h3>
+<ul>
+<li><strong>Cas d'ús</strong>: RF01</li>
+<li><strong>Nom</strong>: Realitza encàrrec</li>
+<li><strong>Actors</strong>: Usuari</li>
+<li><strong>Descripció</strong>:
+    L'usuari finalitza l'encàrrec per iniciar el seu procés de preparació</li>
+<li><strong>Precondicions</strong>:
+    S'ha de tractar d'un usuari del sistema, i el carret ha de tindre algun article</li>
+<li><strong>Seqüència normal</strong>:</li>
+<li>El sistema comprova que el carret continga articles</li>
+<li>Es valida l'usuari a través del cas d'ús corresponent</li>
+<li>S'emmagatzema l'encàrrec a la base de dades.</li>
+<li><strong>Postcondicions</strong>
+    S'ha generat un nou registre en la base de dades amb l'encàrrec</li>
+<li><strong>Excepcions:</strong><ul>
+<li>1.1. Si el carret està buit, es mostra un missatge d'error a l'usuari.</li>
+<li>2.1. Si la validació no es correcta es mostra un missatge d'error i no es continua.</li>
+<li>3.1. Si es produeix algun error en l'emmagatzemament s'informa a l'usuari i es genera un registre d'error.</li>
+</ul>
+</li>
+<li><strong>Requisits no funcionals</strong>:<ul>
+<li>Les connexions han de ser segures, utilitzant protocols com HTTPS.</li>
+<li>El temps de resposta del sistema per emmagatzemar l'encàrrec no ha de superar els 2 segons en condicions normals.</li>
+<li>Els missatges d'error han de ser clars i comprensibles per a l'usuari final.</li>
+</ul>
+</li>
+</ul>
+<h2 id="dibuixant-diagrames-de-casos-dus">Dibuixant diagrames de casos d'ús</h2>
+<p>A l'hora de dibuixar casos d'ús seguirem un raonament guiat pels següents passos:</p>
+<ol>
+<li>Identificar <strong>fonts d'informació</strong>, preguntant-nos d'on prové la informació que utilitzarà el sistema.</li>
+<li>Identificar <strong>actors potencials</strong>, com els <em>usuaris</em> i <em>serveis</em> que utilitzaran el sistema,</li>
+<li>Identificar possibles <strong>casos d'ús</strong>, preguntant-nos quins serveis utilitzaran els actors,</li>
+<li><strong>Associar actors i casos d'ús</strong>, de manera que determinem quins actors tindran accés a quines funcionalitats del sistema,</li>
+<li>Determinar <strong>a quin o què representen els actors</strong>, </li>
+<li>Buscar <em>més casos d'ús</em>,</li>
+<li><strong>Documentar</strong> detalladament cada cas d'ús,</li>
+<li>Determinar <strong>relacions entre els difernts casos d'ús</strong> i identificar accions que es realitzen repetidament.</li>
+<li><strong>Comprovar</strong> la vista general per a que tot estiga correcte.</li>
+</ol>
+<p>Recordeu que per optimitzar aquest procés cal comprendre bé el negoci i el sistema, i sovint haurem de fer partíceps en l'elaboració dels casos als clients, experts o consultors del negoci.</p>
+<h2 id="exercicis">Exercicis</h2>
+<p>A continuació se us proposen un parell d'especificacions textuals, que podriem haver extret d'entrevistes o correus amb un posible client. </p>
+<p>A partir d'aquestes especificacions, haureu de generar el diagrama de casos d'ús, seguint els pasos indicats anteriorment i com documentar aquests. Concretament, per a cada cas d'ús es demana:</p>
+<ul>
+<li>Identificar actors principals i secundaris (usuaris finals, administradors, sistemes externs...).</li>
+<li>identificar els casos d'ús</li>
+<li>Dissenyar els diagrames de casos d’ús per a cada especificació (al menys un disseny amb Umbrello i altre amb PlantUML)</li>
+<li>Establir relacions com &lt;&lt; include &gt;&gt; i &lt;&lt; extend &gt;&gt; on siga necessari.</li>
+<li>Especificar els requeriments funcionals i no funcionals en taules associades als casos d'ús.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Especificació 1: Gestió d'una biblioteca digital</p>
+<p>Voldríem una aplicació que permeta als usuaris buscar i demanar llibres en format digital o físic. Els administradors del sistema haurien de poder gestionar el catàleg, afegint o eliminant llibres, i gestionar també les sol·licituds de préstec. Els usuaris que s'hagen registrat poden veure l'historial de préstecs i descarregar llibres digitals. Les connexions amb el sistema han de ser segures, i el temps de resposta ha de ser ràpid, ja que els usuaris no tenen molta paciència.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Especificació 2: Sistema de reserva d'entrades per a esdeveniments</p>
+<p>Necessitem una plataforma en línia per a la compra i reserva d'entrades per a esdeveniments culturals i esportius. Els usuaris registrats han de poder veure els esdeveniments disponibles, reservar entrades i veure les reserves al seu perfil. Els organitzadors d'esdeveniments han de poder publicar nous esdeveniments, actualitzar-ne els detalls i consultar estadístiques de vendes. A més, volem que el sistema notifique als usuaris per correu electrònic quan un esdeveniment canvie de data o de localització.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Especificació 3: Aplicació de gestió de comandes en un restaurant</p>
+<p>Estem buscant una aplicació que permeta als cambrers gestionar les comandes de les taules. Cada cambrer ha de poder assignar una comanda a una taula, afegir o eliminar plats, i finalitzar la comanda per enviar-la a la cuina. A la cuina, el sistema ha de mostrar les comandes pendents i permetre marcar-les com a preparades. També volem que l’aplicació genere automàticament la factura per a cada taula i permeta als cambrers cobrar. És important que l'aplicació funcione bé en dispositius mòbils.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

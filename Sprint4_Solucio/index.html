@@ -1,0 +1,622 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../img/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>Sprint4 Solucio - Anàlisi i Disseny Orientat a Objectes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sprint-4-resolucio" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Anàlisi i Disseny Orientat a Objectes" class="md-header__button md-logo" aria-label="Anàlisi i Disseny Orientat a Objectes" data-md-component="logo">
+      
+  <img src="../img/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Anàlisi i Disseny Orientat a Objectes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sprint4 Solucio
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Anàlisi i Disseny Orientat a Objectes" class="md-nav__button md-logo" aria-label="Anàlisi i Disseny Orientat a Objectes" data-md-component="logo">
+      
+  <img src="../img/logo.svg" alt="logo">
+
+    </a>
+    Anàlisi i Disseny Orientat a Objectes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.UML/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. UML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.DiagramesCasosUs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Diagrama de casos d'us
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.DiagramaClasses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Diagrama de classes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.DiagramesSequencia/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Diagrama de seqüència
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.DiagramaComponents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Diagrama de Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sprint-4-resolucio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sprint 4. Resolució.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sprint 4. Resolució.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-casos-dus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de casos d'ús
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#especificacio-dels-requisits-funcionals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Especificació dels requisits funcionals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrames-de-sequencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrames de seqüència
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>Sprint4 Solucio</h1>
+
+<h2 id="sprint-4-resolucio">Sprint 4. Resolució.</h2>
+<h3 id="diagrama-de-casos-dus">Diagrama de casos d'ús</h3>
+<p>En aquest diagrama, incorporem els casos d'ús per demanar begudes i processar la comanda.</p>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_5276350218431936820.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_5276350218431936820.svg" /></a></p>
+<h3 id="especificacio-dels-requisits-funcionals">Especificació dels requisits funcionals</h3>
+<p>Els nous requeriments funcionals quedaran especificats de la següent manera:</p>
+<h4 id="cas-dus-rf06-consultar-cataleg-de-begudes"><strong>Cas d'ús: RF06 - Consultar catàleg de begudes</strong></h4>
+<ul>
+<li><strong>Nom:</strong> Consultar catàleg de begudes  </li>
+<li><strong>Actors:</strong> Client  </li>
+<li><strong>Descripció:</strong> El client pot accedir a la pestanya de begudes per veure la llista de begudes disponibles.  </li>
+<li><strong>Precondicions:</strong> El client ha d'accedir a la web i veure el menú de productes.  </li>
+<li><strong>Postcondicions:</strong> Es mostra la llista de begudes disponibles, incloent informació com nom, preu i característiques (sucre, cafeïna, alcohol).  </li>
+</ul>
+<h5 id="flux-principal"><strong>Flux principal</strong></h5>
+<ol>
+<li>El client accedeix a la pestanya de begudes.  </li>
+<li>El sistema obté la llista de begudes de l'API i genera les targetes corresponents.  </li>
+<li>El client visualitza les begudes disponibles.  </li>
+</ol>
+<h5 id="fluxos-alternatius-excepcions"><strong>Fluxos alternatius (excepcions)</strong></h5>
+<ul>
+<li><strong>Error en la càrrega de dades:</strong> Si hi ha un problema en la comunicació amb l'API, es mostra un missatge d'error.  </li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Compte</p>
+<p>Ací és fàcil caure en l'error de voler <em>enriquir</em> els requisits amb la possibilitat d'afegir i eliminar begudes al carret.</p>
+<p>Cal tindre en compte que aquestes no són funcionalitats noves en aquest sprint, ja que estan cobertes pels casos d'ús <em>Afegir productes al carret</em> i <em>Eliminar Productes al carret</em>.</p>
+<p>Aquests dos casos d'ús són genèrics, i ja inclouen qualsevol producte (pizzes, entrants, i ara begudes).</p>
+</div>
+<h4 id="cas-dus-rf07-processar-comanda"><strong>Cas d'ús: RF07 - Processar comanda</strong></h4>
+<ul>
+<li><strong>Nom:</strong> Processar comanda  </li>
+<li><strong>Actors:</strong> Client  </li>
+<li><strong>Descripció:</strong> Quan el client ha completat la selecció de productes al carret, pot enviar la comanda a la pizzeria. El servidor confirma la recepció i retorna l'hora prevista d'arribada i el número de comanda.</li>
+<li><strong>Precondicions:</strong> El carret conté productes.</li>
+<li><strong>Postcondicions:</strong> Si la comanda s'envia correctament, es mostra un missatge de confirmació amb l'hora d'arribada i el número de comanda, i s'elimina el contingut del carret. Si hi ha un error, es mostra un missatge d'error.</li>
+</ul>
+<h5 id="flux-principal_1"><strong>Flux principal</strong></h5>
+<ol>
+<li>El client accedeix a la pestanya del carret.  </li>
+<li>El client fa clic en el botó "Processar comanda".  </li>
+<li>El sistema envia la comanda a l'API REST del servidor.</li>
+<li>L'API REST retorna una resposta amb la confirmació de la comanda.  </li>
+<li>El sistema mostra la confirmació de la comanda amb l'hora estimada d'arribada.  </li>
+<li>La comanda s'afegeix a l'històric de comandes i el carret es buida.  </li>
+</ol>
+<h5 id="fluxos-alternatius-excepcions_1"><strong>Fluxos alternatius (excepcions)</strong></h5>
+<ul>
+<li><strong>Error en l'enviament:</strong> Si hi ha un problema en la comunicació amb el servidor, es mostra un missatge d'error.  </li>
+<li><strong>Comanda rebutjada:</strong> Si el servidor retorna un error, es mostra el missatge indicat per l'API.  </li>
+</ul>
+<p>A més, tenim com a <em>extra</em> el següent requisit per consultar l'històric de comandes. Recordem que fins ara, aquest no serà persistent.</p>
+<h4 id="cas-dus-rf08-consultar-historic-de-comandes"><strong>Cas d'ús: RF08 - Consultar històric de comandes</strong></h4>
+<ul>
+<li><strong>Nom:</strong> Consultar històric de comandes  </li>
+<li><strong>Actors:</strong> Client  </li>
+<li><strong>Descripció:</strong> El client pot accedir a la pestanya d’històric de comandes per veure una llista de les comandes realitzades prèviament.  </li>
+<li><strong>Precondicions:</strong> Ha d'haver almenys una comanda processada.  </li>
+<li><strong>Postcondicions:</strong> Es mostra la llista de comandes anteriors amb el número de comanda, l’hora d’arribada i els productes de la comanda.  </li>
+</ul>
+<h4 id="flux-principal_2"><strong>Flux principal</strong></h4>
+<ol>
+<li>El client accedeix a la pestanya d’històric de comandes.  </li>
+<li>Es mostren les comandes realitzades en la sessió actual en format de targeta amb la informació corresponent.  </li>
+</ol>
+<p><strong>Nota</strong>: L'històric de comandes només es manté durant l'execució de l'aplicació. No es guarda en cap base de dades ni emmagatzemament local, de manera que no persisteix quan es recarrega la pàgina.</p>
+<h4 id="fluxos-alternatius-excepcions_2"><strong>Fluxos alternatius (excepcions)</strong></h4>
+<ul>
+<li><strong>Històric buit:</strong> Si encara no s’ha realitzat cap comanda en la sessió actual, no es mostra res en l'històric.  </li>
+<li><strong>Error en la càrrega de dades:</strong> Si hi ha un problema en la consulta, es mostra un missatge d’error.  </li>
+</ul>
+<h3 id="diagrama-de-classes">Diagrama de classes</h3>
+<p>El diagrama de classes, en la seua versió més senzilla es mostra de la següent manera:</p>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_1964796955247812357.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_1964796955247812357.svg" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Algunes reflexions sobre persistència i gestió de l'estat</p>
+<p>En aquest punt, és fàcil confondre dos conceptes que hem esmentat però no hem treballat produndament: la gestió de l'estat i la persistència.</p>
+<ul>
+<li><strong>Gestió de l’estat</strong>: mecanisme que manté informació temporal durant l'execució de l'aplicació, com per exemple, el contingut del carret.</li>
+<li><strong>Persistència</strong>: Guarda informació entre sessions perquè no es perda en recarregar l'aplicació (com per exemple un històric de comandes que volguerem emmagatzemar)</li>
+</ul>
+<p>Com veiem, estracta de conceptes diferents, tot i que estan relacionats:</p>
+<ul>
+<li>L’estat es guarda en memòria mentre l’aplicació està oberta,</li>
+<li>La persistència ens permetria restaurar l'estat després de tancar i tornar a obrir l'aplicació.</li>
+<li>En moltes ocasions, és interessant oferir persistència a l'estat. En l'exemple que estem veient, podriem voler mantenir el carret persistent si es refresca la pàgina, però tenim molts altres exemples, com mantenir les pantalles que teniem superades en un videojoc o les converses iniciades en una aplicació de missatgeria.</li>
+</ul>
+<p>En aquest exemple, no es demana incorporar persistència en cap lloc. Si volguerem guardar l'històric de comandes, podriem fer-ho en local, en el propi navegador fent ús del <code>localStorage</code>, o directament en el servidor, on ja caldria incorporar gestió d'usuaris per associar les comandes, etc, i l'arquitectura potser se'ns complicaria una miqueta.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Un component per a l'històric?</p>
+<p>Un altre punt que podríem discutir és si incorporar o no un nou component a la interfície per a l'històric. En Sprints anteriors, per a l'apartat de les pizzes, els entrants i ara les begudes, no hem utilitzat cap tipus de component específic per a aquests, però sí que ho hem fet per al carret. Per què?</p>
+<p>El motiu és que el carret té un comportament específica, i per exemple, ha d'estar pendent de quan s'afig o s'elimina algun producte per actualitzar-se, però en la resta de casos no. </p>
+<p>Per al cas de l'històric de comandes, si no va a tindre cap comportament especial, podem ignorar aquest component.</p>
+<p>No obstant això, i per tal de millorar-ne la modularitat i possibles amplicacions, podria plantejar-se incorporar un component específic per a l'històric (i fins i tot, també components per a les begudes, pizzess o entrants!)</p>
+</div>
+<p>Tenint en compte les dues anotacions anteriors, en cas que volguerem afegir aquesta persistència, i a més, afegir un WebComponent per mostrar l'historial, en lloc de fer-ho en un div directament, implementaríem les següents classes.</p>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_7455328702322582819.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_7455328702322582819.svg" /></a></p>
+<p>Amb això tenim:</p>
+<ul>
+<li>Una nova classe <code>GestorPersistència</code> per gestionar l'emmagatzemament (p. ex. en localStorage)</li>
+<li>Ara <code>Carret</code>  tindrà els mètodes <code>guardarCarret()</code> i <code>carregarCarret()</code> per poder recuperar l'estat després de reiniciar l'aplicació.</li>
+<li>Hem afegir un <code>GestorPersistència</code> que gestiona tant la persistència del carret com la de les comandes.</li>
+<li>Hem afegit el component <code>HistorialComponent</code> qeue encapsula la visualització de comandes guardades.</li>
+</ul>
+<h3 id="diagrames-de-sequencia">Diagrames de seqüència</h3>
+<p>Una vegada definit el <strong>diagrama de classes</strong>, podem abordar els <strong>diagrames de seqüència</strong> seguint la mateixa estructura que hem utilitzat en els sprints anteriors.</p>
+<p>Generarem doncs els diagames de seqüència per a :</p>
+<ul>
+<li>Consultar el catàleg de begudes, que indicarà com es carrega i es mostra la llista de begudes,</li>
+<li>Processar una comanda, on veurem com s'envia la comanda al servidor i mostrar la resposta.</li>
+</ul>
+<p>I tot i que no es demanava, vaurem també el diagrama per consultar l'històric de comades.</p>
+<h4 id="diagrama-de-sequencia-consultar-el-cataleg-de-begudes">Diagrama de seqüència: Consultar el catàleg de begudes</h4>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_8107093277247086204.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_8107093277247086204.svg" /></a></p>
+<h4 id="diagrama-de-sequencia-processar-una-comanda">Diagrama de seqüència: Processar una comanda</h4>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_403187844812109353.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_403187844812109353.svg" /></a></p>
+<h4 id="diagrama-de-sequencia-consultar-lhistoric-de-comandes">Diagrama de seqüència: Consultar l’històric de comandes</h4>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_2667149031457706849.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_2667149031457706849.svg" /></a></p>
+<h3 id="diagrama-de-components">Diagrama de components</h3>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_97953656699050697.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_97953656699050697.svg" /></a></p>
+<p>Els diagrames de components tenen com a objectiu mostrar l'<strong>arquitectura d'alt nivell d'una aplicació</strong>, representant com es relacionen els diferents components entre si i com interactuen amb els serveis externs. No obstant això, quan el sistema creix i incorpora molts elements, el diagrama pot convertir-se en massa complex i difícil de llegir.</p>
+<p>En el diagrama anterior s'han reflexat totes les connexions entre els components del sistema, incloent la creació de cadascun per part del fitxer principal (main.js) i totes les interaccions directes entre ells.</p>
+<p>Aquest diagrama presenta alguns problemes per poder interpretar-lo a primera vista:</p>
+<ul>
+<li>Té massa connexions, fent que el flux d’informació siga difícil de seguir.</li>
+<li>El fitxer <em>main.js</em> està representat per crear cada component, quan en realitat això no aporta informació rellevant en quant a l'arquitectura.</li>
+<li>Les connexions entre components que ja s’entenen implícitament (com <code>CounterComponent</code> dins de <code>PizzaCard</code>) no caldria dibuixar-les explícitament.</li>
+</ul>
+<p>Així doncs, és preferible treballar amb una simplificació d'aquest diagrama, que millore la legibilitat i ens ajude a entendre millor l'arquitectura del sistema. </p>
+<p>Veiem com quedaria:</p>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_6837373675775062410.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_6837373675775062410.svg" /></a></p>
+<p>En aquest diagrama, ara es reflexa principalment els diferents components que formen l'arquitectura de l'aplicació (interfície, serveis, gestió de l'estat). Com veiem, hem eliminat el main.js, hem reduit les connexions directes, i només hem mostrat les dependències més rellevants. Si alguna cosa requereix d'alguna aclaració, podem fer ús de notes per explicar els diferents conceptes o explicar relacions sense afegir més línies.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

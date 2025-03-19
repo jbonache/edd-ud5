@@ -1,0 +1,1538 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2.DiagramesCasosUs/">
+      
+      
+        <link rel="next" href="../4.DiagramesSequencia/">
+      
+      
+      <link rel="icon" href="../img/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>3. Diagrama de classes - Anàlisi i Disseny Orientat a Objectes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#diagrames-estructurals-i-el-diagrama-de-classes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Anàlisi i Disseny Orientat a Objectes" class="md-header__button md-logo" aria-label="Anàlisi i Disseny Orientat a Objectes" data-md-component="logo">
+      
+  <img src="../img/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Anàlisi i Disseny Orientat a Objectes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3. Diagrama de classes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Anàlisi i Disseny Orientat a Objectes" class="md-nav__button md-logo" aria-label="Anàlisi i Disseny Orientat a Objectes" data-md-component="logo">
+      
+  <img src="../img/logo.svg" alt="logo">
+
+    </a>
+    Anàlisi i Disseny Orientat a Objectes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.UML/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. UML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.DiagramesCasosUs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Diagrama de casos d'us
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    3. Diagrama de classes
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    3. Diagrama de classes
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#diagrames-estructurals-i-el-diagrama-de-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrames estructurals i el diagrama de classes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elements-dun-diagrama-de-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elements d'un diagrama de classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Elements d&#39;un diagrama de classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#representacio-de-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representació de Classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representacio-de-relacions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representació de Relacions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dibuixant-diagrames-de-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Dibuixant diagrames de classes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.DiagramesSequencia/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Diagrama de seqüència
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.DiagramaComponents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Diagrama de Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#diagrames-estructurals-i-el-diagrama-de-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrames estructurals i el diagrama de classes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elements-dun-diagrama-de-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elements d'un diagrama de classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Elements d&#39;un diagrama de classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#representacio-de-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representació de Classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representacio-de-relacions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representació de Relacions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dibuixant-diagrames-de-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Dibuixant diagrames de classes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>3. Diagrama de classes</h1>
+
+<h2 id="diagrames-estructurals-i-el-diagrama-de-classes">Diagrames estructurals i el diagrama de classes</h2>
+<p>Els diagrames estructurals o d'estructura són aquells que <strong>representen l'estructura estàtica dels objectes del sistema</strong>. Entre ells, el diagrama de classes és el més conegut i utilitzat.</p>
+<p>El diagrama de classes és un diagrama purament orientat al model de programació orientat a objectes, ja que defineix les classes que s'utilitzaran i la manera en què es relacionen entre elles. Com veurem, s'assembla molt al diagrama Entitat-Relació (E/R), amb la diferència que el diagrama de classes també representa la funcionalitat que ofereixen les classes. Ambdós són models de dades lògics d'un sistema.</p>
+<h2 id="elements-dun-diagrama-de-classes">Elements d'un diagrama de classes</h2>
+<p>El diagrama està format principalment per <em>classes</em> i les <em>relacions</em> entre elles, així com per <em>interfícies</em>. Veiem cadascuna d'elles.</p>
+<div class="admonition note">
+<p class="admonition-title">Conceptes sobre POO</p>
+<p>Abans d'endinsar-nos en el disseny i la creació de diagrames de classes, anem a fer una introducció molt breu als diferents conceptes que tractarem.</p>
+<ul>
+<li><strong>Objectes</strong></li>
+<li>Un objecte és una entitat amb certes <strong>propietats o atributs</strong>, els valors de les quals detrminen el seu <strong>estat</strong>, i determinat <strong>comportament</strong>, determinat per una sèrie de funcions que coneixem com <strong>mètodes</strong>.</li>
+<li>Un objecte, a més, té un nom pel qual s'identifica.</li>
+<li>
+<p>A més, cada objecte té una identitat única, la qual permet diferenciar-lo d'altres objectes, encara que tinguen els mateixos valors (estat) als atributs.</p>
+</li>
+<li>
+<p><strong>Classes</strong></p>
+</li>
+<li>Una classe és una abstracció d'un conjunt d'objectes, i un objecte ha de pertànyer neccessàriament a alguna classe. Quan definim una classe hem de definir els atributs i mètodes que posseïran els objectes.d'aquesta.</li>
+<li>Diem que un objecte és una <strong>instància</strong> d'una classe.  </li>
+</ul>
+</div>
+<h3 id="representacio-de-classes">Representació de Classes</h3>
+<p>Les classes són l'element principal del diagrama i representen, com el seu nom indica, una classe dins del paradigma d'orientació a objectes. Normalment s'utilitzen per a <strong>representar conceptes</strong> o <strong>entitats del <em>negoci</em></strong>.</p>
+<p>Una classe <strong>defineix un grup d'objectes que comparteixen característiques comunes</strong>. La manera més ràpida per a trobar classes sobre un enunciat o en general, sobre un tema concret és <em>buscar els substantius que apareixen en aquest</em>. Per exemple: <em>Persona</em>, <em>Missatge</em>, <em>Producte</em>, etc.</p>
+<p>Una classe es compon de tres elements o seccions principals:</p>
+<ul>
+<li>El <strong>nom de la classe</strong>,</li>
+<li>Els <strong>atributs</strong> o <strong>propietats</strong>, que són variables associades a la classe i representen la part estàtica d'aquesta,</li>
+<li>Els <strong>mètodes</strong>, que són funcions associades a la classe, i representen la seua part dinàmica.</li>
+</ul>
+<p>La representació d'una classe és una caixa dividida en tres zones, de la següent manera:</p>
+<pre class="mermaid"><code>classDiagram
+    class Classe  {
+        +propietat1: Tipus
+        -propietat2: Tipus
+        #propietat3: Tipus
+
+        +metode1() Tipus
+        +metode2() Tipus
+    }</code></pre>
+<ul>
+<li>A la part superior s'indica <strong>el nom de la classe</strong>. Si es tracta d'una classe <em>abstracta</em> (és a dir, no es pot instanciar directament, sinó que serveix per definir altres classes), aquest nom s'indica <em>en cursiva</em>.</li>
+<li>La part central conté els atributs de la classe, un per línia i amb els següents formats:</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>visibilitat nom_atribut : tipus = valorInicial { propietats }
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>visibilitat nom_atribut : tipus
+</span></code></pre></div>
+<ul>
+<li>La zona inferior, finalment, inclou els mètodes de la classe, i s'expressen de forma semblant:</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>visibilitat nom_mètode { *paràmetres } : TipusRetorn { propietats }
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>visibilitat nom_mètode: TipusRetorn
+</span></code></pre></div>
+<p>Els atributs i mètodes tenen un tipus de dada (el tipus de dada de l'atribut, i el tipus de dada que retorna, en cas dels mètodes), així com una visibilitat o nivell d'accés, que determina qui pot o no accedir a ells.</p>
+<div class="admonition note">
+<p class="admonition-title">Sobre la visibilitat o el nivell d'accés a atributs i mètodes</p>
+<p>La visibilitat de propietats o mètodes ens ajuda a protegir i encapsular aquests, de manera que puguem decidir qui accedeix o no a aquestes. La visibilitat pot ser:</p>
+<ul>
+<li><strong>public</strong>: L'atribut o mètode és accessible des de qualsevol lloc de l'aplicació.</li>
+<li><strong>privat</strong>: L'atribut o mètode només és accessible dins la mateixa classe.</li>
+<li><strong>protegit</strong>: L'atribut o mètode només és accessible dins la mateixa classe o les seues <em>classes derivades</em>.</li>
+</ul>
+<p>Habitualment, per tal d'aprofitar els beneficis de l'encapsulament i aïllament de codi que proporciona la programació orientada a objectes, els atributs es solen declarar com a <em>privats</em>, i només en cas que es permeta l'accés a ells des de fora, es farà a través de <em>mètodes públics</em>. Aquests mètodes es coneixen com <em>setters</em> (estableixen el valor d'un atribut) i <em>getters</em> (consulten el valor d'un atribut) o mètodes <em>accessors</em>.</p>
+<p>Els mètodes serviran per comunicar-nos amb els objectes i interactuar amb ells, a través de <strong>missatges</strong>, que no és més que la invocació als seus mètodes.</p>
+</div>
+<p>Als diagrames UML, expressem la visibilitat amb:</p>
+<ul>
+<li><strong>(+)</strong>: Per definir una propietat o mètode com a <strong>pública</strong></li>
+<li><strong>(-)</strong>: Per definir una propietat o mètode com a <strong>privada</strong></li>
+<li><strong>(#)</strong>: Per definir una propietat o mètode com a <strong>protegida</strong></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Dependència del llenguatge en la visibilitat i orientació a objectes</p>
+<p>Els conceptes de <strong>public</strong>, <strong>private</strong> i <strong>protected</strong> són característics de molts llenguatges orientats a objectes, com ara <strong>Java</strong>, i estan directament suportats per aquests llenguatges. Per exemple, Java permet declarar explícitament la visibilitat dels atributs i mètodes d'una classe i proporciona mecanismes com els <em>setters</em> i <em>getters</em> per a implementar l'encapsulament. </p>
+<p>Altres llenguatges no implementen aquestes característiques directament, però ofereixen altres mecanismes semblants. Al cas de Javascript per exemple, des de la versió ES11 (de 2019), podem fer ús de <code>#</code> mer marcar atributs i mètodes privats.</p>
+</div>
+<h4 id="com-expressar-una-classe-en-plantuml-i-mermaid">Com expressar una classe en PlantUML i Mermaid**:</h4>
+<p>La sintaxi per expressar classes en PlantUML és la següent:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>``` plantuml
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="ni">@startuml</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>class nomClasse {
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  -propietat_privada : tipus
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  <span class="ni">#propietat_protegida</span> : tipus
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  +metode_public() : tipus
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>}
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="ni">@enduml</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>```
+</span></code></pre></div>
+<p>Que ens genera el següent diagrama:</p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_8535680731992654590.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_8535680731992654590.svg" /></a></p>
+<p>Observeu com es marquen amb un quadre roig els components privats, amb un romb groc les protegits, i amb un cercle verd els públics.</p>
+<p>Per la seua banda, amb Mermaid, ho expressariem així:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="sb">```mermaid</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="s">classDiagram</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s">    class nomClasse {</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="s">        -propietat_privada : tipus</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="s">        #propietat_protegida : tipus</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="s">        +metode_public() : tipus</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="s">    }</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="sb">```</span>
+</span></code></pre></div>
+<p>Que queda represenat així:</p>
+<pre class="mermaid"><code>classDiagram
+    class nomClasse {
+        -propietat_privada : tipus
+        #propietat_protegida : tipus
+        +metode_public() : tipus
+    }</code></pre>
+<p>Veiem un exemple que podria representar un objecte tipus Nau en un videojoc:</p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_302033191195127236.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_302033191195127236.svg" /></a></p>
+<p>Com veiem, es tracta d'una classe <code>Nau</code>, amb dos atributs privats: <code>posicioX</code> i <code>posicioY</code>. Per tal d'accedir a ells, es disposa dels mètodes <code>getPosicioX()</code> i <code>getPosicioY()</code>. A més, la classe defineix el mètode <code>dispara()</code>.</p>
+<h5 id="propietats-i-metodes-estatics">Propietats i mètodes estàtics</h5>
+<p>Un atribut o mètode <strong>estàtic</strong> és aquell que <strong>ressideix en la classe</strong>, i no ens els objectes que s'instancien d'ella.</p>
+<p>En UML ho remarquem subratllant l'atribut o mètode en qüestió.</p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_1026368814617958799.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_1026368814617958799.svg" /></a></p>
+<pre class="mermaid"><code>classDiagram
+    class Classe {
+        propitat_estatica Tipus$
+    }</code></pre>
+<h4 id="classes-en-accio-en-java-i-javascript">Classes en acció en Java i Javascript</h4>
+<h5 id="java">Java</h5>
+<p>La traducció a Java de la classe <em>Nau</em> anterior seria literal, incloent els atributs i mètodes corresponents, a més del mètode <strong><em>constructor</em></strong>:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Nau</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="cm">/* Atributs */</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">posicioX</span><span class="p">;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">posicioY</span><span class="p">;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="cm">/* Constructor */</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">Nau</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span><span class="cm">/* Mètodes d&#39;accés */</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPosicioX</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="n">posicioX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">valor</span><span class="p">;</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPosicioX</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">posicioX</span><span class="p">;</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPosicioY</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">    </span><span class="n">posicioY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">valor</span><span class="p">;</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPosicioY</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">posicioY</span><span class="p">;</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">  </span><span class="cm">/* Altres mètodes */</span>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">dispara</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="w">    </span><span class="p">...</span>
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Instanciació</strong></p>
+<p>La instanciació és el procés pel qual creem un nou objecte a partir d'una classe. Per a això fem ús de l'operador <code>new</code>:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">Nau</span><span class="w"> </span><span class="n">AlaX</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">Nau</span><span class="p">();</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">Nau</span><span class="w"> </span><span class="n">TieFighter</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">Nau</span><span class="p">();</span>
+</span></code></pre></div>
+<p>Quan fem ús de <code>new</code> per obtenir una instància d'una classe (és a dir, per crear un objecte), s'executa un mètode especial de la classe, anomenat mètode <strong>constructor</strong>, que s'encarrega generalment d'inicialitar l'objecte. Tota classe hauria de tindre, com a mínim, un constructor (aquest mètode sol ometre's als diagrames UML per ser obvi).</p>
+<p>En Java, el mètode <strong>constructor</strong> té el mateix nom que la classe, i pot ser un mètode <strong><em>sobrecarregat</em></strong>. Això significa que podem tindre definit el mètode diverses vegades, sempre que tinga una llista d'arguments diferent. </p>
+<p>Quan una classe no requereix de cap inicialització per instanciar-se, com és el cas anterior, el constructor pot ometre's, de manara que Java afig un <strong>constructor per defecte</strong>.</p>
+<p>Als diagrames UML, no sol indicar-se el constructor, ja que assumim que tot objecte posseeix un mètode constructor. Ara bé, en cas que volguem inicialitzar els objectes d'alguna manera especial i sobrecarregar el constructor, es podrien incloure aquests constructors.</p>
+<p>En cas que volguem afegir més constructors sobrecarregats, però també volguem proporcionar un constructor sense arguments, caldrà indicar-los tots de manera explícita. A l'exemple anterior, podriem haver definit els constructors com a:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Nau</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="p">...</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="cm">/* Constructor buit. </span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="cm">     Necessari si volem instanciar sense proporcionar arguments */</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">Nau</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="cm">/* Constructor sobrecarregat </span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="cm">     Crea una nau amb valors inicials per a la posició</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="cm">  */</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">Nau</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">posicioX</span><span class="o">=</span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">posicioY</span><span class="o">=</span><span class="n">y</span><span class="p">;</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">   </span><span class="p">};</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">   </span><span class="p">...</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Questió...</p>
+<p><strong>Si definim el següent:</strong></p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">Nau</span><span class="w"> </span><span class="n">nau_1</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">Nau</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">Nau</span><span class="w"> </span><span class="n">nau_2</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">Nau</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</span></code></pre></div>
+<p><strong>Estem definint dues vegades el mateix objecte?</strong></p>
+<p>La resposta és que NO. Cada objecte té una identitat pròpia, i s'emmagatzema en una variable diferent. És més, cada objecte ocupa una direcció de memòria diferent.</p>
+<p>Si comparàrem els dos objectes <code>nau_1==nau_2</code>, obtindriem <em>Fals</em> com a resposta.</p>
+<p>Moltes classes solen implementar un mètode <code>equals</code> per comparar un objecte amb altre, de manera que internament, comparen el valor dels diferents atributs i determinen si són els mateixos o no.</p>
+</div>
+<p>En Java, les classes també permeten un modificador d'accés. Aquest pot ser:</p>
+<ul>
+<li><strong><em>public</em></strong>: Classe pública, accessible des de qualsevol altra classe. Només pot haver una classe pública en cada fitxer font (ext .java), i ha de tindre el mateix nom que el fitxer. Si no indiquem res, la classe només podrà ser accedida des del mateix paquet (package).</li>
+<li><strong>abstract / final</strong>: S'utilitzen quan fem ús de l'herència:<ul>
+<li><strong><em>abstract</em></strong>: La classe no permet la instanaciació d'objectes, sinò la definició d'altres classes que implementen mètodes que aquesta defineix com a abstractes.</li>
+<li><strong><em>final</em></strong>: Classe que implementa els mètodes abstractes, i de la que no es podran crear subclasses.</li>
+</ul>
+</li>
+</ul>
+<h5 id="javascript">Javascript</h5>
+<p>La traducció a Javascript de la classe <em>Nau</em> seria així:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">Nau</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1">// Atributs privats</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="n">#posicioX</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="n">#posicioY</span><span class="p">;</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">#posicioX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">#posicioY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">  </span><span class="c1">// Getters</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="nx">posicioX</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">#posicioX</span><span class="p">;</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="nx">posicioY</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">#posicioY</span><span class="p">;</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">  </span><span class="c1">// Setters</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">  </span><span class="nx">set</span><span class="w"> </span><span class="nx">posicioX</span><span class="p">(</span><span class="nx">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">#posicioX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">valor</span><span class="p">;</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="w">  </span><span class="nx">set</span><span class="w"> </span><span class="nx">posicioY</span><span class="p">(</span><span class="nx">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">#posicioY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">valor</span><span class="p">;</span>
+</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a>
+</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="w">  </span><span class="nx">dispara</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a>
+</span><span id="__span-10-31"><a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-10-32"><a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>I podríem instanciar aquesta, per exemple amb:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nau</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Nau</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+</span></code></pre></div>
+<p>En primer lloc, fixem-nos en la forma de declarar i accedir a les propietats <code>#posicioX</code> i <code>#posicioY</code>. Amb el símbol <code>#</code> al davant estem indicant que es tracta de propietats privades, de manera ue només poden ser accessibles des de dins de la classe.</p>
+<p>Observeu també, que en aquest cas, els <code>getters</code> i <code>setters</code> són funcions que tenen al davant la paraula clau <code>get</code> o <code>set</code>. Això ens permetrà accedir a ells com si es tractara de propietats públiques. És a dir, que podem fer coses com:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nau</span><span class="p">.</span><span class="nx">posicioX</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nx">nau</span><span class="p">.</span><span class="nx">posicioY</span><span class="o">=</span><span class="mf">15</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nau</span><span class="p">.</span><span class="nx">posicioY</span><span class="p">)</span>
+</span></code></pre></div>
+<p>I finalment, observeu que el constructor ara és únic, i defineix valors per defecte per a les propietats. D'aquesta manera, si el constructor s'invoca sense arguments:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>const nau3=new Nau()
+</span></code></pre></div>
+<p>El valor de les seues propietats serà l'indicat per defecte (0,0).</p>
+<div class="admonition question">
+<p class="admonition-title">Questió</p>
+<p>Si definim així la nau:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">Nau</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">   </span><span class="c1">// Atributs privats</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">     </span><span class="n">#pos_x</span><span class="p">;</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">     </span><span class="n">#pos_y</span><span class="p">;</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">   </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">     </span><span class="k">this</span><span class="p">.</span><span class="n">#pos_X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">     </span><span class="k">this</span><span class="p">.</span><span class="n">#pos_Y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">   </span><span class="p">}</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">   </span><span class="c1">// Getters</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">   </span><span class="nx">get</span><span class="w"> </span><span class="nx">posicioX</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">#pos_X</span><span class="p">;</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">   </span><span class="p">}</span>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">   </span><span class="nx">get</span><span class="w"> </span><span class="nx">posicioY</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">#pos_Y</span><span class="p">;</span>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="w">   </span><span class="p">}</span>
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="w">   </span><span class="c1">// Setters</span>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="w">   </span><span class="nx">set</span><span class="w"> </span><span class="nx">posicioX</span><span class="p">(</span><span class="nx">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="w">     </span><span class="k">this</span><span class="p">.</span><span class="n">#pos_X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">valor</span><span class="p">;</span>
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="w">   </span><span class="p">}</span>
+</span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>
+</span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="w">   </span><span class="nx">set</span><span class="w"> </span><span class="nx">posicioY</span><span class="p">(</span><span class="nx">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-26"><a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a><span class="w">     </span><span class="k">this</span><span class="p">.</span><span class="n">#pos_Y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">valor</span><span class="p">;</span>
+</span><span id="__span-15-27"><a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a><span class="w">   </span><span class="p">}</span>
+</span><span id="__span-15-28"><a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p>Podrem fer, per exemple <code>console.log(posicioX)</code>? I <code>posicioY=20</code>?</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Generació automàtica de codi</p>
+<p>Cal tindre en compte que quan utilitzem eines CASE que ens ajuden a crear el codi a partir dels diagrames, és possible que ens generen automàticament els mètodes <em>accessors</em> als atributs, de manera que no siga necessari incloure'ls al diagrama.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">A tindre en compte...</p>
+<p>Com hem vist, hem de tindre en compte que la sintaxi, tant per definir les classes com els mètodes accessors i altres característiques dependrà en gran mesura del llenguatge de programació que escollim, i fins i tot, potser hi haja alguns aspectes que podem representar als diagrames UML que no es puguen veure reflexats en una implementació.</p>
+</div>
+<h3 id="representacio-de-relacions">Representació de Relacions</h3>
+<p>Les diferents classes que conformen una aplicació interaccionen entre elles, a través de diferents tipus de <em>relacions</em>. Generalment, les relacions seran entre dos o més classes, tot i que de vegades, una classe pot establir relacions amb ella mateixa (dependència <em>reflexiva</em>).</p>
+<p>Per tal de representar una relació entre classes en un diagrama de classes fem ús d'una línia que les uneix. Aquesta línia serà diferent segons el tipus de relació.</p>
+<p>Les relacions en el diagrama de classes tenen diverses propietats, que podrem representar més o menys segons el nivell de detall que volguem aportar. Aquestes <strong>propietats de les relacions</strong> són:</p>
+<ul>
+<li><strong>Multiplicitat</strong>: Indica el nombre d'elements que participen en la relació. Pot ser un número, un rang.. Si es tracta d'un número qualsevol, podem utilitzar <code>*</code>o <code>n</code>.</li>
+<li><strong>Nom de l'associació</strong>, que ens ajuda a entendre la relació entre les classes.</li>
+</ul>
+<h4 id="tipus-de-relacions">Tipus de relacions</h4>
+<p>Les relacions, com hem dit poden ser de diferents tipus. En un diagrama de classes, podem trobar-nos els següents tipus de relacions:</p>
+<ul>
+<li>Associació.</li>
+<li>Agregació.</li>
+<li>Composició.</li>
+<li>Dependència.</li>
+<li>Herència.</li>
+</ul>
+<p>Vegem cadascun d'aquests tipus de relacions.</p>
+<h5 id="associacio">Associació</h5>
+<p>És la relació més comuna i s'utilitza per a representar <em>dependència semàntica</em>, sense cap implicació de propietat. Es representa amb una simple línia contínua que uneix les classes que estan incloses en l'associació.</p>
+<p>Veiem un exemple:</p>
+<p><a class="glightbox" href="../img/associacio.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple d'associació" src="../img/associacio.png" /></a></p>
+<p>En aquest exemple, tenim definides dues classes: <code>Nau</code> i <code>Pilot</code>. La relació entre elles és que un <code>Pilot</code>, <code>Pilota</code> una <code>Nau</code>. Com veiem, la relació té una multiplicitat 1:1, és a dir, en un moment donat, un <em>pilot</em> està <em>pilotant</em> una nau, i una nau és <em>pilotada</em> per un pilot.</p>
+<p>Tal i com l'hem expressada, es tracta d'una relació <em>bidireccional</em>. Això vol dir que des de <code>Nau</code>, podem <em>navegar</em> a <code>Pilot</code>, i a l'inrevès. En altres paraules, donada una nau podem saber qui la pilota, i donat un pilot podem saber quina nau pilota.</p>
+<p>Aquestes relacions d'associació, també admeten <strong>associacions unidirecconals</strong>, que restringeixen la direcció de navegació. Per expressar això, farem ús d'una fletxa que indicarà el sentit d'aquesta associació:</p>
+<p><a class="glightbox" href="../img/associacioDir.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple d'associació unidireccional" src="../img/associacioDir.png" /></a></p>
+<h6 id="representacio-dassociacions-en-plantuml-i-mermaid"><strong>Representació d'associacions en PlantUML i Mermaid</strong></h6>
+<ul>
+<li><strong>PlantUML</strong>:</li>
+</ul>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>``` plantuml
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>  <span class="ni">@startuml</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>  class Nau {
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    -posicioX : int
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    -posicioY : int
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    +dispara() : void
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>  }
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>  class Pilot {
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    -nom : String
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>  }
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>  Pilot --&gt; Nau : pilota
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>  <span class="ni">@enduml</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>  ```
+</span></code></pre></div>
+<p>I el resultat:</p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_3574900898076736005.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_3574900898076736005.svg" /></a></p>
+<ul>
+<li><strong>Mermaid</strong>:</li>
+</ul>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="sb">```mermaid</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="s">  classDiagram</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="s">      class Nau {</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="s">          - posicioX: int</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="s">          - posicioY: int</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="s">          + dispara(): void</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="s">      }</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="s">      class Pilot {</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="s">          - nom: String</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="s">      }</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="s">      Pilot --&gt; Nau : pilota</span>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="sb">```</span>
+</span></code></pre></div>
+<pre class="mermaid"><code>  classDiagram
+      class Nau {
+          - posicioX: int
+          - posicioY: int
+          + dispara(): void
+      }
+
+      class Pilot {
+          - nom: String
+      }
+
+      Pilot --&gt; Nau : pilota</code></pre>
+<h6 id="aspectes-sobre-la-implementacio">Aspectes sobre la implementació</h6>
+<p>Com hem comentat, les relacions són un concepte semàntic, i sovint no tenen una <em>equivalència</em> exacta quan ho passem a un llenguatge de programació. Per exemple... com expressaríeu les dues relacions anteriors amb Java? El mecanisme que tenim a Java (o altres llenguatges de programació) per <em>relacionar</em> classes és utilitzar les classes com a tipus de dades, i definir objectes d'aquest tipus dins d'altres. Com veurem, totes les relacions, quan les passem a Java es basaran en aquest mecanisme. Així doncs, per tal d'establir la relació direccional anterior amb Java, inclouriem un objecte de tipus <em>Pilot</em> dins la definició de <em>Nau</em>:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="cm">/* Classe Pilot */</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">pilot</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">  </span><span class="c1">// Atributs</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">Nom</span><span class="p">;</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">  </span><span class="c1">// Constructor</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">pilot</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">  </span><span class="c1">// Mètodes accessors</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setNom</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">newVar</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="w">    </span><span class="n">Nom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newVar</span><span class="p">;</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getNom</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Nom</span><span class="p">;</span>
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-18-19"><a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>
+</span><span id="__span-18-20"><a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="cm">/* Classe Nau */</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">nau</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">  </span><span class="c1">// Atributs</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">posicioX</span><span class="p">;</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">posicioY</span><span class="p">;</span><span class="w">  </span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">pilot</span><span class="w"> </span><span class="n">pilotActual</span><span class="p">;</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">  </span><span class="c1">// Constructor</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">nau</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">  </span><span class="c1">// Mètodes accessors</span>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPosicioX</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">newVar</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">    </span><span class="n">posicioX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newVar</span><span class="p">;</span>
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPosicioX</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-18"><a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">posicioX</span><span class="p">;</span>
+</span><span id="__span-19-19"><a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-19-20"><a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>
+</span><span id="__span-19-21"><a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPosicioY</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">newVar</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-22"><a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="w">    </span><span class="n">posicioY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newVar</span><span class="p">;</span>
+</span><span id="__span-19-23"><a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-19-24"><a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a>
+</span><span id="__span-19-25"><a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPosicioY</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-26"><a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">posicioY</span><span class="p">;</span>
+</span><span id="__span-19-27"><a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-19-28"><a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a>
+</span><span id="__span-19-29"><a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPilot</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">newPilot</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-30"><a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a><span class="w">    </span><span class="n">pilotActual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newPilot</span><span class="p">;</span>
+</span><span id="__span-19-31"><a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-19-32"><a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a>
+</span><span id="__span-19-33"><a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">pilot</span><span class="w"> </span><span class="nf">getPilot</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-34"><a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">pilotActual</span><span class="p">;</span>
+</span><span id="__span-19-35"><a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-19-36"><a id="__codelineno-19-36" name="__codelineno-19-36" href="#__codelineno-19-36"></a>
+</span><span id="__span-19-37"><a id="__codelineno-19-37" name="__codelineno-19-37" href="#__codelineno-19-37"></a><span class="w">  </span><span class="c1">// Altres mètodes</span>
+</span><span id="__span-19-38"><a id="__codelineno-19-38" name="__codelineno-19-38" href="#__codelineno-19-38"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">dispara</span><span class="p">()</span>
+</span><span id="__span-19-39"><a id="__codelineno-19-39" name="__codelineno-19-39" href="#__codelineno-19-39"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-19-40"><a id="__codelineno-19-40" name="__codelineno-19-40" href="#__codelineno-19-40"></a><span class="w">  </span><span class="p">}</span>
+</span></code></pre></div>
+<p>En cas que volguèrem que l'associació fora bidireccional, hauriem d'incloure també un objecte de tipus <em>Nau</em> dins de <em>Pilot</em>. L'inconvenient d'això és que caldria <em>programàticament</em> estar pedent de quan caviem aquesta associació que es modifiquen els dos objectes relacionats. En estos casos, el més pràctic serà determinar quin serà el sentit <em>normal</em> de les relacions, i fer ús d'associacions direccionals incloent només un objecte d'una classe dins l'altra. A l'exemple anterior, ens serà més útil conéixer quin pilot està pilotant una nau en un moment donat, que no quina nau pilota un pilot en un moment donat.</p>
+<div class="admonition question">
+<p class="admonition-title">Associacions amb multiplicitat N</p>
+</div>
+<p>Quan la multiplicitat de la relació és 1, hem vist que definim objectes d'un tipus dins d'altres. </p>
+<p>Ara bé, com ho farem quan la relació té multiplicitat N?</p>
+<h5 id="agregacio"><strong>Agregació</strong></h5>
+<p>Les relacions d'agregació (<em>"té un"</em>) indiquen quan un objecte (el conjunt) està format per alters objectes. És a dir, una classe (el conjunt) està formada per altres classes (les parts), però aquestes poden existir independentment.</p>
+<p>Per exemple, al cas de la nau, una nau pot estar formada per un propulsor, una cabina i un canó:</p>
+<p><a class="glightbox" href="../img/agregacio.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple d'agregació" src="../img/agregacio.png" width="450px" /></a></p>
+<p>Com veiem, la forma de representar açò en Java, serà incorporar com a atributs tres objectes de tipus <em>Cabina</em>, <em>Propulsor</em> i <em>Canó</em> dins la classe <em>Nau</em>.</p>
+<p>Veiem com expressar aquesta relació amb PlantUML i Mermaid:</p>
+<ul>
+<li><strong>PlantUML</strong>: Fem ús de la notació <code>o--</code> per indicar que la classe de l'esquerra conté una instància de la classe de la dreta.</li>
+</ul>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>  ``` plantuml
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>  <span class="ni">@startuml</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>  class Nau {
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    -propulsor : Propulsor
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    -cabina : Cabina
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>    -cano : Cano
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>  }
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>  class Propulsor
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>  class Cabina
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>  class Cano
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>  Nau o-- Propulsor
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>  Nau o-- Cabina
+</span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>  Nau o-- Cano
+</span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>  <span class="ni">@enduml</span>
+</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>  ```
+</span></code></pre></div>
+<p>Que te la següent representació:</p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_4351666475383071390.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_4351666475383071390.svg" /></a></p>
+<p><strong>Mermaid</strong>: fa ús també de la seqüència <code>o--</code> per indicar l'agregació:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="sb">```mermaid</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="s">  classDiagram</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="s">      class Nau {</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="s">          - propulsor: Propulsor</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="s">          - cabina: Cabina</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="s">          - cano: Cano</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="s">      }</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="s">      class Propulsor</span>
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="s">      class Cabina</span>
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="s">      class Cano</span>
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="s">      Nau o-- Propulsor</span>
+</span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="s">      Nau o-- Cabina</span>
+</span><span id="__span-21-15"><a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="s">      Nau o-- Cano</span>
+</span><span id="__span-21-16"><a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a><span class="sb">```</span>
+</span></code></pre></div>
+<p>Que es representa:</p>
+<pre class="mermaid"><code>  classDiagram
+      class Nau {
+          - propulsor: Propulsor
+          - cabina: Cabina
+          - cano: Cano
+      }
+
+      class Propulsor
+      class Cabina
+      class Cano
+
+      Nau o-- Propulsor
+      Nau o-- Cabina
+      Nau o-- Cano</code></pre>
+<h5 id="composicio"><strong>Composició</strong></h5>
+<p>Es tracta d'un cas especial d'agregació, però amb un valor semàntic més fort, on els elements que en formen part, no tenen sentit sense l'objecte que componen: Quan l'element compost desapareix, totes les seues parts desapareixen, ja que no tenen sentit per sí mateixos. A diferència també de l'agregació, en la composició, els elements components no es poden compartir entre diversos elements, mentre que en l'agregació el mateix objecte sí que pot estar compartit amb diversos elements.</p>
+<p>La seua representació al diagrama de classes és amb una línia contínua amb un romble ple en la classe que és composta.</p>
+<p>Per exemple, una partida d'un videojoc en línia serà la composició de diversos jugadors:</p>
+<p><a class="glightbox" href="../img/composicio.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple de composició" src="../img/composicio.png" width="250px" /></a></p>
+<p>Aquest diagrama indica que una partida està composada per diversos jugadors. En aquest cas, una vegada es finalitza i es destrueix una partida, els jugadors de la partida deixen de tindre sentit. Fixeu-vos que la multiplicitat de <em>Jugadors</em> és <em>un a molts</em>, el que vol dir que una partida tindrà entre un i diversos jugadors.</p>
+<p>La diferència entre agregació i composició és semàntica, i  la majoria de llenguatges de programació, com és el cas de Java no diferencien entre elles.</p>
+<h6 id="representacio-en-mermaid-i-plantuml">Representació en Mermaid i PlantUML</h6>
+<p>En PlantUML i Mermaid fem ús de la seqüència de caracters <code>*--</code> per tal d'expressar una composició:</p>
+<p><strong>PlantUML</strong>:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>``` plantuml
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>  <span class="ni">@startuml</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>  class Partida {
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    -jugadors : Jugador[]
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>  }
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>  class Jugador {
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>    -nom : String
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>  }
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>  Partida *-- Jugador
+</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>  <span class="ni">@enduml</span>
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>  ```
+</span></code></pre></div>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_5110501052714636420.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_5110501052714636420.svg" /></a></p>
+<p><strong>Mermaid</strong>:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="sb">```mermaid</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="s">  classDiagram</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="s">      class Partida {</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="s">          - jugadors: Jugador[]</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="s">      }</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="s">      class Jugador {</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="s">          - nom: String</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="s">      }</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="s">      Partida *-- Jugador</span>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="sb">  ```</span>
+</span></code></pre></div>
+<pre class="mermaid"><code>classDiagram
+    class Partida {
+        - jugadors: Jugador[]
+    }
+
+    class Jugador {
+        - nom: String
+    }
+
+    Partida *-- Jugador</code></pre>
+<p>!!!!note "Composicions en Java"
+    Podeu veure una implementació d'aquest exemple en Java al document <a href="../composicionsJava/">Composicions en Java</a></p>
+<h5 id="dependencia"><strong>Dependència</strong></h5>
+<p>La relació de dependència es dóna quan una classe requereix d'alguna funcionalitat d'altra classe. La seua representació és una fletxa discontínua, des de la classe que requereix la utilitat de l'altra fins la classe que la ofereix.</p>
+<p>Un exemple de dependència podria ser el segïent:</p>
+<p><a class="glightbox" href="../img/dependencia.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Representació d'una dependència" src="../img/dependencia.png" /></a>{</p>
+<p>Com veiem, així expressem que la classe <em>Calculadora</em> depèn de la classe <em>Primes</em>, de la llibreria <code>org.apache.commons.math3.primes.Primes</code>.</p>
+<h6 id="representacio-de-dependencia-en-plantuml-i-mermaid">Representació de dependència en PlantUML i Mermaid</h6>
+<p>En PlantUML:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>  ``` plantuml
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>  <span class="ni">@startuml</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>  class Calculadora {
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    +calculaPrimes() : void
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>  }
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>  class Primes
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>  Calculadora ..&gt; Primes : utilitza
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>  <span class="ni">@enduml</span>
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>  ```
+</span></code></pre></div>
+<p>Es representa com a:</p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_1453849920860022410.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_1453849920860022410.svg" /></a></p>
+<p>I en mermaid:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="sb">```mermaid</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="s">  classDiagram</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="s">      class Calculadora {</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="s">          + calculaPrimes(): void</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="s">      }</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="s">      class Primes</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="s">      Calculadora ..&gt; Primes : utilitza</span>
+</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="sb">  ```</span>
+</span></code></pre></div>
+<p>Es representa:</p>
+<pre class="mermaid"><code>classDiagram
+    class Calculadora {
+        + calculaPrimes(): void
+    }
+
+    class Primes
+
+    Calculadora ..&gt; Primes : utilitza</code></pre>
+<h5 id="herencia">Herència</h5>
+<p>L'herència és un dels tipus de relació més interessants i utilitzats en programació orientada a objectes, i ens permet que una classe <em>filla</em>, <em>herete</em> atributs i mètodes d'una altra classe (classe pare o superclasse). La <em>subclasse</em>, a més, podrà definir nous mètodes i atributs. S'utilitza en relacions <em>és un</em>.</p>
+<p>Als diagrames de classes, per tal d'indicar una relació d'herència, es fa ús d'una línia amb un triangle a l'extrem on es troba la classe de la que s'hereta. Veiem-ho a següent exemple:</p>
+<p><a class="glightbox" href="../img/herencia.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple d'herència" src="../img/herencia.png" width="450px" /></a></p>
+<p>Com veiem, tant les classes <code>TieFighter</code> com <code>XWing</code> i <code>YWing</code> són una especialització de la classe <code>Nau</code>, pel que <em>hereten</em> les seues propietats (<code>posicioX</code> i <code>posicioY</code>) així com els seus mètodes (<code>dispara()</code>). A més, cadascuna de les classes, defineix altres mètodes propis de la classe, com <code>ActivarCamuflatge()</code> en <code>TieFighter</code>, <code>LlançarBomba()</code> en <code>XWing</code> i <code>BotarHiperespai</code> en <code>YWing</code>.</p>
+<p>Per tal d'expressar una relació d'herència en <strong>PlantUML</strong> farem:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>``` plantuml
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="ni">@startuml</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>class Nau {
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>  -posicioX : int
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>  -posicioY : int
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>  +dispara() : void
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>}
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>class TieFighter {
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>  +activarCamuflatge() : void
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>}
+</span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>
+</span><span id="__span-26-13"><a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>class XWing {
+</span><span id="__span-26-14"><a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a>  +llançarBomba() : void
+</span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a>}
+</span><span id="__span-26-16"><a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>
+</span><span id="__span-26-17"><a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a>class YWing {
+</span><span id="__span-26-18"><a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a>  +botarHiperespai() : void
+</span><span id="__span-26-19"><a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a>}
+</span><span id="__span-26-20"><a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a>
+</span><span id="__span-26-21"><a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a>TieFighter --|&gt; Nau
+</span><span id="__span-26-22"><a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a>XWing --|&gt; Nau
+</span><span id="__span-26-23"><a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a>YWing --|&gt; Nau
+</span><span id="__span-26-24"><a id="__codelineno-26-24" name="__codelineno-26-24" href="#__codelineno-26-24"></a><span class="ni">@enduml</span>
+</span><span id="__span-26-25"><a id="__codelineno-26-25" name="__codelineno-26-25" href="#__codelineno-26-25"></a>```
+</span></code></pre></div>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_4007088216178213200.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_4007088216178213200.svg" /></a></p>
+<p>Per la seua banda, en Mermaid la sintaxi és pràcticament idèntica:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="sb">```mermaid</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="s">classDiagram</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="s">    class Nau {</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="s">        - posicioX: int</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="s">        - posicioY: int</span>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="s">        + dispara(): void</span>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="s">    }</span>
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>
+</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="s">    class TieFighter {</span>
+</span><span id="__span-27-10"><a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="s">        + activarCamuflatge(): void</span>
+</span><span id="__span-27-11"><a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="s">    }</span>
+</span><span id="__span-27-12"><a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>
+</span><span id="__span-27-13"><a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a><span class="s">    class XWing {</span>
+</span><span id="__span-27-14"><a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="s">        + llançarBomba(): void</span>
+</span><span id="__span-27-15"><a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="s">    }</span>
+</span><span id="__span-27-16"><a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a>
+</span><span id="__span-27-17"><a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="s">    class YWing {</span>
+</span><span id="__span-27-18"><a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a><span class="s">        + botarHiperespai(): void</span>
+</span><span id="__span-27-19"><a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a><span class="s">    }</span>
+</span><span id="__span-27-20"><a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a>
+</span><span id="__span-27-21"><a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a><span class="s">    TieFighter --|&gt; Nau</span>
+</span><span id="__span-27-22"><a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a><span class="s">    XWing --|&gt; Nau</span>
+</span><span id="__span-27-23"><a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a><span class="s">    YWing --|&gt; Nau</span>
+</span><span id="__span-27-24"><a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a>
+</span><span id="__span-27-25"><a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a><span class="sb">```</span>
+</span></code></pre></div>
+<p>I es representa:</p>
+<pre class="mermaid"><code>classDiagram
+    class Nau {
+        - posicioX: int
+        - posicioY: int
+        + dispara(): void
+    }
+
+    class TieFighter {
+        + activarCamuflatge(): void
+    }
+
+    class XWing {
+        + llançarBomba(): void
+    }
+
+    class YWing {
+        + botarHiperespai(): void
+    }
+
+    TieFighter --|&gt; Nau
+    XWing --|&gt; Nau
+    YWing --|&gt; Nau</code></pre>
+<h6 id="implementacio-en-java">Implementació en Java</h6>
+<p>En Java, fem ús de la paraula reservada <code>extends</code>per indicar que una classe deriva d'una altra. Veiem com quedaria l'exemple de dalt:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Nau</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">posicioX</span><span class="p">;</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">posicioY</span><span class="p">;</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">  </span><span class="cm">/* Constructor */</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">Nau</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="w">  </span><span class="cm">/* Mètodes d&#39;accés */</span>
+</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPosicioX</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">newVar</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="w">    </span><span class="n">posicioX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newVar</span><span class="p">;</span>
+</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>
+</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPosicioX</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-28-14"><a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">posicioX</span><span class="p">;</span>
+</span><span id="__span-28-15"><a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-28-16"><a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a>
+</span><span id="__span-28-17"><a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPosicioY</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">newVar</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-28-18"><a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a><span class="w">    </span><span class="n">posicioY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newVar</span><span class="p">;</span>
+</span><span id="__span-28-19"><a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-28-20"><a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a>
+</span><span id="__span-28-21"><a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPosicioY</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-28-22"><a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">posicioY</span><span class="p">;</span>
+</span><span id="__span-28-23"><a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-28-24"><a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a>
+</span><span id="__span-28-25"><a id="__codelineno-28-25" name="__codelineno-28-25" href="#__codelineno-28-25"></a><span class="w">  </span><span class="cm">/* Altres mètodes */</span>
+</span><span id="__span-28-26"><a id="__codelineno-28-26" name="__codelineno-28-26" href="#__codelineno-28-26"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">dispara</span><span class="p">()</span>
+</span><span id="__span-28-27"><a id="__codelineno-28-27" name="__codelineno-28-27" href="#__codelineno-28-27"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-28-28"><a id="__codelineno-28-28" name="__codelineno-28-28" href="#__codelineno-28-28"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-28-29"><a id="__codelineno-28-29" name="__codelineno-28-29" href="#__codelineno-28-29"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kd">class</span> <span class="nc">TieFigter</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Nau</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w">    </span><span class="c1">// Constructor</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="w">    </span><span class="n">TieFigher</span><span class="p">(){</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="w">        </span><span class="c1">// Invoca al constructor del pare</span>
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="w">        </span><span class="kd">super</span><span class="p">();</span>
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="w">    </span><span class="c1">// Mètodes nous</span>
+</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">ActivarCamuflatge</span><span class="p">(){</span>
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="w">        </span><span class="p">...</span>
+</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="kd">class</span> <span class="nc">XWing</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Nau</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">    </span><span class="c1">// Constructor</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">    </span><span class="n">TieFigher</span><span class="p">(){</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">        </span><span class="c1">// Invoca al constructor del pare</span>
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="w">        </span><span class="kd">super</span><span class="p">();</span>
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>
+</span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="w">    </span><span class="c1">// Mètodes nous</span>
+</span><span id="__span-30-10"><a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">LlançarBomba</span><span class="p">(){</span>
+</span><span id="__span-30-11"><a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="w">        </span><span class="p">...</span>
+</span><span id="__span-30-12"><a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-30-13"><a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kd">class</span> <span class="nc">YWing</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Nau</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">    </span><span class="c1">// Constructor</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">    </span><span class="n">TieFigher</span><span class="p">(){</span>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="w">        </span><span class="c1">// Invoca al constructor del pare</span>
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="w">        </span><span class="kd">super</span><span class="p">();</span>
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>
+</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="w">    </span><span class="c1">// Mètodes nous</span>
+</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">BotarHiperespai</span><span class="p">(){</span>
+</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="w">        </span><span class="p">...</span>
+</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Açò ens permet, per exemple, definir un objecte de tipus <code>XWing</code>:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">XWing</span><span class="w"> </span><span class="n">nauLuke</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">XWing</span><span class="p">();</span>
+</span></code></pre></div>
+<p>I utilitzar tant els mètodes de <code>Nau</code> com de <code>XWing</code>:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">nauLuke</span><span class="p">.</span><span class="na">dispara</span><span class="p">();</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="n">nauLuke</span><span class="p">.</span><span class="na">LlançarBomba</span><span class="p">();</span>
+</span></code></pre></div>
+<h6 id="implementacio-en-javascript"><strong>Implementació en JavaScript</strong></h6>
+<p>En <strong>JavaScript (ES6+),</strong> també podem establir relacions d'herència utilitzant la paraula reservada <strong><code>extends</code></strong>. L'equivalent a l'exemple anterior en <strong>JavaScript</strong> seria el següent:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1">// Definició de la classe base Nau</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="kd">class</span><span class="w"> </span><span class="nx">Nau</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="w">  </span><span class="n">#posicioX</span><span class="p">;</span><span class="w"> </span><span class="c1">// Atribut privat</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="w">  </span><span class="n">#posicioY</span><span class="p">;</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">#posicioX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span>
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">#posicioY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>
+</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="w">  </span><span class="c1">// Getters i Setters</span>
+</span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="nx">posicioX</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">#posicioX</span><span class="p">;</span>
+</span><span id="__span-34-14"><a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-34-15"><a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>
+</span><span id="__span-34-16"><a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a><span class="w">  </span><span class="nx">set</span><span class="w"> </span><span class="nx">posicioX</span><span class="p">(</span><span class="nx">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-17"><a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">#posicioX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">valor</span><span class="p">;</span>
+</span><span id="__span-34-18"><a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-34-19"><a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a>
+</span><span id="__span-34-20"><a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a><span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="nx">posicioY</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-21"><a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">#posicioY</span><span class="p">;</span>
+</span><span id="__span-34-22"><a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-34-23"><a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a>
+</span><span id="__span-34-24"><a id="__codelineno-34-24" name="__codelineno-34-24" href="#__codelineno-34-24"></a><span class="w">  </span><span class="nx">set</span><span class="w"> </span><span class="nx">posicioY</span><span class="p">(</span><span class="nx">valor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-25"><a id="__codelineno-34-25" name="__codelineno-34-25" href="#__codelineno-34-25"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="n">#posicioY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">valor</span><span class="p">;</span>
+</span><span id="__span-34-26"><a id="__codelineno-34-26" name="__codelineno-34-26" href="#__codelineno-34-26"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-34-27"><a id="__codelineno-34-27" name="__codelineno-34-27" href="#__codelineno-34-27"></a>
+</span><span id="__span-34-28"><a id="__codelineno-34-28" name="__codelineno-34-28" href="#__codelineno-34-28"></a><span class="w">  </span><span class="nx">dispara</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-29"><a id="__codelineno-34-29" name="__codelineno-34-29" href="#__codelineno-34-29"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Disparant!&quot;</span><span class="p">);</span>
+</span><span id="__span-34-30"><a id="__codelineno-34-30" name="__codelineno-34-30" href="#__codelineno-34-30"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-34-31"><a id="__codelineno-34-31" name="__codelineno-34-31" href="#__codelineno-34-31"></a><span class="p">}</span>
+</span><span id="__span-34-32"><a id="__codelineno-34-32" name="__codelineno-34-32" href="#__codelineno-34-32"></a>
+</span><span id="__span-34-33"><a id="__codelineno-34-33" name="__codelineno-34-33" href="#__codelineno-34-33"></a><span class="c1">// Definició de la classe TieFighter, que hereta de Nau</span>
+</span><span id="__span-34-34"><a id="__codelineno-34-34" name="__codelineno-34-34" href="#__codelineno-34-34"></a><span class="kd">class</span><span class="w"> </span><span class="nx">TieFighter</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Nau</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-35"><a id="__codelineno-34-35" name="__codelineno-34-35" href="#__codelineno-34-35"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-36"><a id="__codelineno-34-36" name="__codelineno-34-36" href="#__codelineno-34-36"></a><span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span><span class="w"> </span><span class="c1">// Invoca al constructor del pare</span>
+</span><span id="__span-34-37"><a id="__codelineno-34-37" name="__codelineno-34-37" href="#__codelineno-34-37"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-34-38"><a id="__codelineno-34-38" name="__codelineno-34-38" href="#__codelineno-34-38"></a>
+</span><span id="__span-34-39"><a id="__codelineno-34-39" name="__codelineno-34-39" href="#__codelineno-34-39"></a><span class="w">  </span><span class="nx">activarCamuflatge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-40"><a id="__codelineno-34-40" name="__codelineno-34-40" href="#__codelineno-34-40"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Activant camuflatge!&quot;</span><span class="p">);</span>
+</span><span id="__span-34-41"><a id="__codelineno-34-41" name="__codelineno-34-41" href="#__codelineno-34-41"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-34-42"><a id="__codelineno-34-42" name="__codelineno-34-42" href="#__codelineno-34-42"></a><span class="p">}</span>
+</span><span id="__span-34-43"><a id="__codelineno-34-43" name="__codelineno-34-43" href="#__codelineno-34-43"></a>
+</span><span id="__span-34-44"><a id="__codelineno-34-44" name="__codelineno-34-44" href="#__codelineno-34-44"></a><span class="c1">// Definició de la classe XWing, que hereta de Nau</span>
+</span><span id="__span-34-45"><a id="__codelineno-34-45" name="__codelineno-34-45" href="#__codelineno-34-45"></a><span class="kd">class</span><span class="w"> </span><span class="nx">XWing</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Nau</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-46"><a id="__codelineno-34-46" name="__codelineno-34-46" href="#__codelineno-34-46"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-47"><a id="__codelineno-34-47" name="__codelineno-34-47" href="#__codelineno-34-47"></a><span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span><span class="w"> </span><span class="c1">// Invoca al constructor del pare</span>
+</span><span id="__span-34-48"><a id="__codelineno-34-48" name="__codelineno-34-48" href="#__codelineno-34-48"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-34-49"><a id="__codelineno-34-49" name="__codelineno-34-49" href="#__codelineno-34-49"></a>
+</span><span id="__span-34-50"><a id="__codelineno-34-50" name="__codelineno-34-50" href="#__codelineno-34-50"></a><span class="w">  </span><span class="nx">llançarBomba</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-51"><a id="__codelineno-34-51" name="__codelineno-34-51" href="#__codelineno-34-51"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Llançant bomba!&quot;</span><span class="p">);</span>
+</span><span id="__span-34-52"><a id="__codelineno-34-52" name="__codelineno-34-52" href="#__codelineno-34-52"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-34-53"><a id="__codelineno-34-53" name="__codelineno-34-53" href="#__codelineno-34-53"></a><span class="p">}</span>
+</span><span id="__span-34-54"><a id="__codelineno-34-54" name="__codelineno-34-54" href="#__codelineno-34-54"></a>
+</span><span id="__span-34-55"><a id="__codelineno-34-55" name="__codelineno-34-55" href="#__codelineno-34-55"></a><span class="c1">// Definició de la classe YWing, que hereta de Nau</span>
+</span><span id="__span-34-56"><a id="__codelineno-34-56" name="__codelineno-34-56" href="#__codelineno-34-56"></a><span class="kd">class</span><span class="w"> </span><span class="nx">YWing</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Nau</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-57"><a id="__codelineno-34-57" name="__codelineno-34-57" href="#__codelineno-34-57"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-58"><a id="__codelineno-34-58" name="__codelineno-34-58" href="#__codelineno-34-58"></a><span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">);</span><span class="w"> </span><span class="c1">// Invoca al constructor del pare</span>
+</span><span id="__span-34-59"><a id="__codelineno-34-59" name="__codelineno-34-59" href="#__codelineno-34-59"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-34-60"><a id="__codelineno-34-60" name="__codelineno-34-60" href="#__codelineno-34-60"></a>
+</span><span id="__span-34-61"><a id="__codelineno-34-61" name="__codelineno-34-61" href="#__codelineno-34-61"></a><span class="w">  </span><span class="nx">botarHiperespai</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-34-62"><a id="__codelineno-34-62" name="__codelineno-34-62" href="#__codelineno-34-62"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Botant a l&#39;hiperespai!&quot;</span><span class="p">);</span>
+</span><span id="__span-34-63"><a id="__codelineno-34-63" name="__codelineno-34-63" href="#__codelineno-34-63"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-34-64"><a id="__codelineno-34-64" name="__codelineno-34-64" href="#__codelineno-34-64"></a><span class="p">}</span>
+</span><span id="__span-34-65"><a id="__codelineno-34-65" name="__codelineno-34-65" href="#__codelineno-34-65"></a>
+</span><span id="__span-34-66"><a id="__codelineno-34-66" name="__codelineno-34-66" href="#__codelineno-34-66"></a><span class="c1">// Exemple d&#39;ús</span>
+</span><span id="__span-34-67"><a id="__codelineno-34-67" name="__codelineno-34-67" href="#__codelineno-34-67"></a><span class="kd">const</span><span class="w"> </span><span class="nx">nauLuke</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">XWing</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">);</span>
+</span><span id="__span-34-68"><a id="__codelineno-34-68" name="__codelineno-34-68" href="#__codelineno-34-68"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nauLuke</span><span class="p">.</span><span class="nx">posicioX</span><span class="p">);</span><span class="w"> </span><span class="c1">// Mostra 10</span>
+</span><span id="__span-34-69"><a id="__codelineno-34-69" name="__codelineno-34-69" href="#__codelineno-34-69"></a><span class="nx">nauLuke</span><span class="p">.</span><span class="nx">dispara</span><span class="p">();</span><span class="w"> </span><span class="c1">// &quot;Disparant!&quot;</span>
+</span><span id="__span-34-70"><a id="__codelineno-34-70" name="__codelineno-34-70" href="#__codelineno-34-70"></a><span class="nx">nauLuke</span><span class="p">.</span><span class="nx">llançarBomba</span><span class="p">();</span><span class="w"> </span><span class="c1">// &quot;Llançant bomba!&quot;</span>
+</span></code></pre></div>
+<h6 id="classes-abstractes">Classes abstractes</h6>
+<p>En principi, podrem instanciar objectes de les quatre classes. En cas que només tinguera sentit definir naus dels tipus de les subclasses, podriem definir la classe <code>Nau</code> com a <em>classe abstracta</em>, indicant que aquesta classe només serveix per definiar altres classes, però no per instanciar objectes.</p>
+<p>Per expressar això en PlantUML fem ús de la paraula <code>abstract</code> davant la classe:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>![<span class="nt">Diagrama UML</span>](<span class="na">../diagrames/3.DiagramaClasses/diagram_5285262101066759597.svg</span>)
+</span></code></pre></div>
+<p>Que queda representat així:</p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_5285262101066759597.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_5285262101066759597.svg" /></a></p>
+<p>Com veiem, en lloc d'una C davant la classe, apareix una A, indicant que és abstracta.</p>
+<p>Per la seua banda, a Mermaid fem ús de la paraula clau <code>&lt;&lt;abstract&gt;&gt;</code> dins la definicó de la classe:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="sb">```mermaid</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="s">classDiagram</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="s">class Nau {</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="s">&lt;&lt;abstract&gt;&gt;</span>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="s">  -posicioX : int</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="s">  -posicioY : int</span>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="s">  +dispara() : void</span>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="s">}</span>
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a><span class="sb">```</span>
+</span></code></pre></div>
+<p>Que es representa mostrant <code>abstract</code> davant la classe al diagrama corresponent:</p>
+<pre class="mermaid"><code>classDiagram
+class Nau {
+&lt;&lt;abstract&gt;&gt;
+  -posicioX : int
+  -posicioY : int
+  +dispara() : void
+}
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Notes sobre el polimorfisme</p>
+<p>Un altre aspecte interessant que introdueix la programació orientada a objectes és el <strong>polimorfisme</strong>, que ens permet enviar missatges sintàcticament iguals a classes de diferent tipus. Per exemple, el mètode <code>dispara()</code> es pot utilitzar en qualsevol objecte de la classe <code>nau</code> o de qualsevol de les classes derivades. Açò ens permet, per exemple, en una partida, tindre una estructura de dades d'objectes genèrics, de tipus nau, que emmagatzeme naus de qualsevol tipus.</p>
+<p>Per exemple, podriem definir un <code>ArrayList</code> d'objectes de tipus <code>Nau</code>:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Nau</span><span class="o">&gt;</span><span class="w"> </span><span class="n">flota</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">ArratList</span><span class="o">&lt;</span><span class="n">Nau</span><span class="o">&gt;</span><span class="p">();</span>
+</span></code></pre></div>
+<p>I afegir elements de qualsevol tipus derivat a dins:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="n">XWing</span><span class="w"> </span><span class="n">nauLuke</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">XWing</span><span class="p">();</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="n">YWing</span><span class="w"> </span><span class="n">nauSnap</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">YWing</span><span class="p">();</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="n">TieFighter</span><span class="w"> </span><span class="n">nauVader</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">TieFighter</span><span class="p">();</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="n">flota</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">nauLuke</span><span class="p">);</span>
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="n">flota</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">nauSnap</span><span class="p">);</span>
+</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="n">flota</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">nauVader</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+<p><strong>Sobre l'herencia múltiple</strong></p>
+<p>En un diagrama de classes ens podem trobar el cas que una classe siga una especialització de dues classes ascendents. Per exemple:</p>
+<p><a class="glightbox" href="../img/HerenciaMultiple.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple d'herència múltiple" src="../img/HerenciaMultiple.png" width="300px" /></a></p>
+<p>En aquest exemple, la classe <code>Trident</code> és una especialització tant de <code>Nau</code> com de <code>VehicleAquatic</code>, pel que hereta les propietats i mètodes de les dos.</p>
+<p>L'herència múltiple no està suportada en tots els llenguatges de programació. Al cas de Java i Javascript, per exemple, una classe només pot tindre una classe ascendent. Aquesta limitació del llenguatge es supleix mitjançant les <strong>interfícies</strong>.</p>
+<h5 id="interficies">Interfícies</h5>
+<p>Una interfície és una entitat que declara una sèrie d'atributs, mètodes i obligacions. És una espècie de <em>contracte</em> on tota instància associada a una interfície ha d'implementar els serveis que indica aquella interfície.</p>
+<p>Com que únicament són declaracions, les interfícies no poden ser instanciades, és a dir, no podem crear objectes a partir d'una interfície.</p>
+<p>Les interfícies s'associen a classes. Això vol dir que una classe <em>compleix amb el contracte</em> que indica la interfície, és a dir, inclou aquells mètodes i atributs que indica la interfície.</p>
+<p>La seua representació és similar a les classes, però indicant a dalt la paraula <code>&lt;&lt;interface&gt;&gt;</code>:</p>
+<p><a class="glightbox" href="../img/Interficies.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple d'interfície" src="../img/Interficies.png" width="250px" /></a></p>
+<p>En aquest exemple, una nau diem que <em>implementa</em>  la interfície <code>Dibuixable</code>, que <em>obliga</em> a les classes que la implementen a disposar d'un mètode <em>Dibuixa()</em>, per dibuixar la nau a la pantalla. En el cas de les interfícies, una <strong>classe sí que pot implementar diverses interfícies</strong>, suplint així la limitació de l'herència múltiple.</p>
+<p>Com veiem, la relació entre una classe i la interfície o interfícies que implementa és amb la mateixa línia discontínua que indicàvem les relacions d'herència, amb un triangle/flexta a la <em>interfície</em>.</p>
+<p>Per representar una intefície en PlantUML fem ús de la paraula clau <em>interface</em> en lloc de <em>class</em>:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>``` plantuml
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="ni">@startuml</span>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>interface Dibuixable {
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>  +Dibuixa() : void
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>}
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>
+</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>class Nau {
+</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>  +Dibuixa() : void
+</span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a>}
+</span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>
+</span><span id="__span-39-11"><a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a>Nau ..|&gt; Dibuixable
+</span><span id="__span-39-12"><a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a><span class="ni">@enduml</span>
+</span><span id="__span-39-13"><a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a>```
+</span></code></pre></div>
+<p>Que es representa marcant la interfície amb una <code>I</code> i una línia discontínua:</p>
+<p><a class="glightbox" href="../diagrames/3.DiagramaClasses/diagram_7916293229250373239.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/3.DiagramaClasses/diagram_7916293229250373239.svg" /></a></p>
+<p>Per la seua banda, amb Mermaid, no fem ús de la paraula <em>inteface</em> per definir la classe, però podem marcar una classe amb <code>&lt;&lt;interface&gt;&gt;</code> i expressar la relació de <em>implements</em> amb <code>..|&gt;</code>:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>``` mermaid
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>classDiagram
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>    class Dibuixable {
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>      &lt;&lt;interface&gt;&gt;
+</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>        + Dibuixa()
+</span><span id="__span-40-6"><a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>    }
+</span><span id="__span-40-7"><a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>
+</span><span id="__span-40-8"><a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>    class Nau {
+</span><span id="__span-40-9"><a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>        + Dibuixa()
+</span><span id="__span-40-10"><a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a>    }
+</span><span id="__span-40-11"><a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a>
+</span><span id="__span-40-12"><a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a>    Nau ..|&gt; Dibuixable
+</span><span id="__span-40-13"><a id="__codelineno-40-13" name="__codelineno-40-13" href="#__codelineno-40-13"></a>```
+</span></code></pre></div>
+<pre class="mermaid"><code>classDiagram
+    class Dibuixable {
+      &lt;&lt;interface&gt;&gt;
+        + Dibuixa()
+    }
+
+    class Nau {
+        + Dibuixa()
+    }
+
+    Nau ..|&gt; Dibuixable</code></pre>
+<h6 id="implementacio-en-java_1">Implementació en Java</h6>
+<p>En Java, definiriem la interfície amb la paraula clau <code>interface</code>, i faríem ús de la paraula <code>implements</code> per indicar que una classe implementa aquesta interfície:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Dibuixable</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Dibuixa</span><span class="p">();</span>
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="p">}</span>
+</span><span id="__span-41-4"><a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>
+</span><span id="__span-41-5"><a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Nau</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Dibuixable</span><span class="p">{</span>
+</span><span id="__span-41-6"><a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a>
+</span><span id="__span-41-7"><a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a><span class="w">  </span><span class="p">...</span>
+</span><span id="__span-41-8"><a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Dibuixa</span><span class="p">(){</span>
+</span><span id="__span-41-9"><a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a><span class="w">      </span><span class="p">...</span>
+</span><span id="__span-41-10"><a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-41-11"><a id="__codelineno-41-11" name="__codelineno-41-11" href="#__codelineno-41-11"></a>
+</span><span id="__span-41-12"><a id="__codelineno-41-12" name="__codelineno-41-12" href="#__codelineno-41-12"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Per la seua banda, Javscript no suporta interícies com a tal. En lloc d'això, podem optar per diverses opcions més avançades, com per exemple, fer ús de classes abstractes (que limita la implementació de múltiples interfícies), el duck typing, implementar mixins de manera manual, o fer ús directament de typescript.</p>
+<h2 id="3-dibuixant-diagrames-de-classes">3. Dibuixant diagrames de classes</h2>
+<p>Els diagrames de classe estan associats al disseny orientat a objectes. A mode de guía, els passos que generalment seguim a l'hora de realitzar aquest disseny seran els següents:</p>
+<ul>
+<li><strong>Identificar les classes,</strong> que solen correspondre's a substantius dins el domini del problema (client, factura, jugador, etc.)</li>
+<li><strong>Identificar les relacions</strong>  entre les diferents classes, els punts en comú i les abstraccions entre elles, de manera que ajude a agupar-los en dibuixar el diagrama de classes.</li>
+<li><strong>Crear l'estructura</strong> fent ús dels connectors apropiats entre les classes, donant especial atenció a la multiplicitat o les herències. Els atributs i mètodes es perfilaran més tard, una vegada estiga l'estructura del diagrama resolta.</li>
+</ul>
+<p>Algunes <strong>bones pràctiques</strong> que podem tindre en compte a l'hora de generar diagrames de classes són:</p>
+<ul>
+<li>Quan els diagrames creixen poden tornar-se incoherents i poc clars. És preferible crear diagrames menuts que després pogam vincular entre ells que un gran diagrama que es preste a confussió.</li>
+<li>Per començar, podem fer ús de la notació de classe més simple per tindre una visió general d'alt nivell del sistema (pràcticament un entitat-relació), i perfilar-lo després amb els atributs i mètodes.</li>
+<li>Cal assegurar la major claredat en els diagrames, organitzant bé les classes, i evitant coses com, per exemple que es creuen o superposen línies que representen relacions, ja que es presta a confussió.</li>
+<li>De vegades, també és útil fer ús de colors per agrupar mòduls comuns, i ajudar així al lector/client a diferenciar-los.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

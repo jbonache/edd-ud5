@@ -1,0 +1,576 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../img/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>7.Exercicis - Anàlisi i Disseny Orientat a Objectes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://joamuran.net/curs24_25/css/material-just.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#el-just-eat-pizza-aplicacio-web-per-a-una-pizzeria" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Anàlisi i Disseny Orientat a Objectes" class="md-header__button md-logo" aria-label="Anàlisi i Disseny Orientat a Objectes" data-md-component="logo">
+      
+  <img src="../img/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Anàlisi i Disseny Orientat a Objectes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7.Exercicis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Anàlisi i Disseny Orientat a Objectes" class="md-nav__button md-logo" aria-label="Anàlisi i Disseny Orientat a Objectes" data-md-component="logo">
+      
+  <img src="../img/logo.svg" alt="logo">
+
+    </a>
+    Anàlisi i Disseny Orientat a Objectes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inici
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.UML/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. UML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.DiagramesCasosUs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Diagrama de casos d'us
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.DiagramaClasses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Diagrama de classes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.DiagramesSequencia/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Diagrama de seqüència
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.DiagramaComponents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Diagrama de Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-just-eat-pizza-aplicacio-web-per-a-una-pizzeria" class="md-nav__link">
+    <span class="md-ellipsis">
+      El Just Eat Pizza: Aplicació web per a una pizzeria
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El Just Eat Pizza: Aplicació web per a una pizzeria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sprint-1-consulta-del-cataleg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sprint 1: Consulta del catàleg
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#descripcio-funcional-del-cas-dus-consultar-pizzes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descripció funcional del cas d'ús "Consultar Pizzes"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arquitectura-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arquitectura del sistema
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+    <!-- Contingut per a altres pàgines -->
+    
+                  
+
+
+
+  <h1>7.Exercicis</h1>
+
+<h2 id="el-just-eat-pizza-aplicacio-web-per-a-una-pizzeria">El Just Eat Pizza: Aplicació web per a una pizzeria</h2>
+<p>Anem a desenvolupar una aplicació web per a la gestió dels encàrregs d'una pizzeria.</p>
+<p>Treballarem en diferents Sprints, de manera que en cadascun anirem afegint nous requeriments i funcionalitats.</p>
+<h3 id="sprint-1-consulta-del-cataleg">Sprint 1: Consulta del catàleg</h3>
+<p>El primer sprint consistirà en la creació del sistema de consultes de la pizzeria.</p>
+<h4 id="activitat-objectius">Activitat. Objectius.</h4>
+<p>Desenvolupar el disseny UML d'un sistema client-servidor per a la gestió i consulta de pizzes d'una pizzeria. El sistema ha d'oferir als clients la possibilitat de consultar les pizzes disponibles mitjançant una interfície web basada en <strong>WebComponents</strong>.  </p>
+<p>Es demana:</p>
+<ul>
+<li>Implementar el <strong>cas d'ús "Consultar Pizzes"</strong>.  </li>
+<li>Dissenyar els <strong>diagrames UML</strong> necessaris per documentar el procés:  </li>
+<li><strong>Diagrama de casos d'ús</strong>.  </li>
+<li><strong>Diagrama de classes</strong>.  </li>
+<li><strong>Diagrama de seqüència</strong>.  </li>
+<li><strong>Diagrama de components</strong>.  </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Aquest exercici esn ajudarà a entendre com es pot integrar <strong>UML amb una arquitectura basada en WebComponents</strong> i a aprofundir en la comunicació <strong>client-servidor</strong> amb <strong>API REST</strong>.  </p>
+</div>
+<h3 id="descripcio-funcional-del-cas-dus-consultar-pizzes">Descripció funcional del cas d'ús "Consultar Pizzes"</h3>
+<p>L'objectiu del cas d'ús és permetre que un client puga <strong>visualitzar les pizzes disponibles al menú</strong> de la pizzeria a través d'una interfície web.  </p>
+<h4 id="flux-principal">Flux principal</h4>
+<ol>
+<li>El client accedeix al sistema mitjançant el navegador web.  </li>
+<li>El sistema client realitza una petició a l'API del servidor per consultar les pizzes.  </li>
+<li>El servidor rep la petició, consulta la base de dades i retorna la llista de pizzes disponibles.  </li>
+<li>El sistema client rep la llista, la formata i la mostra a l'usuari utilitzant webcomponents.  </li>
+</ol>
+<h4 id="excepcions"><strong>Excepcions:</strong></h4>
+<ul>
+<li>
+<p><strong>Error en la connexió:</strong><br />
+  Si es produeix un error en la comunicació amb el servidor, es mostra un missatge d'error a l'usuari.  </p>
+</li>
+<li>
+<p><strong>Llista buida:</strong><br />
+  Si la llista de pizzes és buida, es notifica a l'usuari que no hi ha pizzes disponibles actualment.  </p>
+</li>
+</ul>
+<h3 id="arquitectura-del-sistema">Arquitectura del sistema</h3>
+<p>L'arquitectura es basa en un model <strong>client-servidor</strong>:</p>
+<ul>
+<li><strong>Client:</strong> Aplicació web basada en <strong>WebComponents</strong>.</li>
+<li><strong>Servidor:</strong> Ofereix una <strong>API REST</strong> per a consultar la llista de pizzes.  </li>
+<li><strong>Base de dades:</strong> Emmagatzema les dades de les pizzes.  </li>
+</ul>
+<h4 id="detall-tecnic-dels-components"><strong>Detall tècnic dels components</strong></h4>
+<ol>
+<li><strong>Classe <code>Pizza</code></strong>  </li>
+<li>
+<p>Conté la informació de cada pizza:  </p>
+<ul>
+<li><code>id</code>, <code>nom</code>, <code>desc</code>, <code>vegetariana</code>, <code>alergens</code>, <code>preu</code> i <code>img</code>.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Classe <code>PizzaCard</code> (WebComponent)</strong></p>
+</li>
+<li>Hereta de <code>HTMLElement</code>.  </li>
+<li>
+<p>Rep un objecte <code>Pizza</code> i mostra la seua informació de forma visual.  </p>
+</li>
+<li>
+<p><strong>Mòdul de comunicació</strong>  </p>
+</li>
+<li>
+<p>Gestiona les peticions al servidor mitjançant <strong>fetch</strong> a una <strong>API REST</strong>.  </p>
+</li>
+</ol>
+<h4 id="alguns-aspectes-a-considerar"><strong>Alguns aspectes a considerar</strong></h4>
+<ol>
+<li><strong>Com integrar les classes que defineixen la interfície en el diagrama de classes?</strong>  Aquestes es poden incloure al diagrama principal o en un diagrama específic d’interfície d'usuari.  </li>
+<li><strong>Com representar correctament la comunicació entre client i servidor en UML?</strong> Utilitzarem un <strong>diagrama de seqüència</strong> per descriure aquesta comunicació.  </li>
+<li><strong>Com diferenciar les responsabilitats del client i del servidor?</strong> El <strong>diagrama de components</strong> ens ajudarà a identificar les responsabilitats i les dependències.  </li>
+</ol>
+<h4 id="activitat"><strong>Activitat</strong></h4>
+<p>A partir d'aquesta descripció, es demana:  </p>
+<ol>
+<li>
+<p><strong>Diagrama de casos d'ús:</strong>  </p>
+<ul>
+<li>Representar el cas d'ús <strong>"Consultar Pizzes"</strong> amb actors, casos d'ús i relacions.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Diagrama de classes:</strong>  </p>
+<ul>
+<li>Incloure les classes necessàries per al primer sprint (mínim: <code>Pizza</code>, <code>PizzaCard</code>, <code>PizzaService</code>).  </li>
+<li>Analitzar si la classe <code>PizzaCard</code> ha d'aparèixer en aquest diagrama o en un de separat.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Diagrama de seqüència:</strong>  </p>
+<ul>
+<li>Mostrar com es realitza la interacció <strong>client-servidor</strong> per a obtenir i mostrar les pizzes.  </li>
+</ul>
+</li>
+<li>
+<p><strong>Diagrama de components:</strong>  </p>
+<ul>
+<li>Esquematitzar l'arquitectura del sistema, diferenciant clarament les parts del <strong>client</strong> i del <strong>servidor</strong>.  </li>
+</ul>
+</li>
+</ol>
+<p><a href="../Sprint1_Pizzes/">Ves a la solució!</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
