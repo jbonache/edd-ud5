@@ -431,7 +431,7 @@
 <h2 id="sprint-4-resolucio">Sprint 4. Resolució.</h2>
 <h3 id="diagrama-de-casos-dus">Diagrama de casos d'ús</h3>
 <p>En aquest diagrama, incorporem els casos d'ús per demanar begudes i processar la comanda.</p>
-<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_6851296501710341917.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_6851296501710341917.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_7218107679378714466.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_7218107679378714466.svg" /></a></p>
 <h3 id="especificacio-dels-requisits-funcionals">Especificació dels requisits funcionals</h3>
 <p>Els nous requeriments funcionals quedaran especificats de la següent manera:</p>
 <h4 id="cas-dus-rf06-consultar-cataleg-de-begudes"><strong>Cas d'ús: RF06 - Consultar catàleg de begudes</strong></h4>
@@ -502,7 +502,7 @@
 </ul>
 <h3 id="diagrama-de-classes">Diagrama de classes</h3>
 <p>El diagrama de classes, en la seua versió més senzilla es mostra de la següent manera:</p>
-<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_4963087609479031626.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_4963087609479031626.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_329617075200727766.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_329617075200727766.svg" /></a></p>
 <div class="admonition note">
 <p class="admonition-title">Algunes reflexions sobre persistència i gestió de l'estat</p>
 <p>En aquest punt, és fàcil confondre dos conceptes que hem esmentat però no hem treballat produndament: la gestió de l'estat i la persistència.</p>
@@ -526,7 +526,7 @@
 <p>No obstant això, i per tal de millorar-ne la modularitat i possibles amplicacions, podria plantejar-se incorporar un component específic per a l'històric (i fins i tot, també components per a les begudes, pizzess o entrants!)</p>
 </div>
 <p>Tenint en compte les dues anotacions anteriors, en cas que volguerem afegir aquesta persistència, i a més, afegir un WebComponent per mostrar l'historial, en lloc de fer-ho en un div directament, implementaríem les següents classes.</p>
-<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_2057491553564462994.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_2057491553564462994.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_6544784954366154669.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_6544784954366154669.svg" /></a></p>
 <p>Amb això tenim:</p>
 <ul>
 <li>Una nova classe <code>GestorPersistència</code> per gestionar l'emmagatzemament (p. ex. en localStorage)</li>
@@ -543,13 +543,13 @@
 </ul>
 <p>I tot i que no es demanava, vaurem també el diagrama per consultar l'històric de comades.</p>
 <h4 id="diagrama-de-sequencia-consultar-el-cataleg-de-begudes">Diagrama de seqüència: Consultar el catàleg de begudes</h4>
-<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_7826869419473625847.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_7826869419473625847.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_3179144946717041433.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_3179144946717041433.svg" /></a></p>
 <h4 id="diagrama-de-sequencia-processar-una-comanda">Diagrama de seqüència: Processar una comanda</h4>
-<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_254521675615182620.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_254521675615182620.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_3746206902603327881.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_3746206902603327881.svg" /></a></p>
 <h4 id="diagrama-de-sequencia-consultar-lhistoric-de-comandes">Diagrama de seqüència: Consultar l’històric de comandes</h4>
-<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_1610824354875676802.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_1610824354875676802.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_918981653037020097.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_918981653037020097.svg" /></a></p>
 <h3 id="diagrama-de-components">Diagrama de components</h3>
-<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_6787895102274997756.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_6787895102274997756.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_5208687111276126272.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_5208687111276126272.svg" /></a></p>
 <p>Els diagrames de components tenen com a objectiu mostrar l'<strong>arquitectura d'alt nivell d'una aplicació</strong>, representant com es relacionen els diferents components entre si i com interactuen amb els serveis externs. No obstant això, quan el sistema creix i incorpora molts elements, el diagrama pot convertir-se en massa complex i difícil de llegir.</p>
 <p>En el diagrama anterior s'han reflexat totes les connexions entre els components del sistema, incloent la creació de cadascun per part del fitxer principal (main.js) i totes les interaccions directes entre ells.</p>
 <p>Aquest diagrama presenta alguns problemes per poder interpretar-lo a primera vista:</p>
@@ -560,7 +560,7 @@
 </ul>
 <p>Així doncs, és preferible treballar amb una simplificació d'aquest diagrama, que millore la legibilitat i ens ajude a entendre millor l'arquitectura del sistema. </p>
 <p>Veiem com quedaria:</p>
-<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_2204427104506388894.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_2204427104506388894.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/Sprint4_Solucio/diagram_6231262787635201761.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/Sprint4_Solucio/diagram_6231262787635201761.svg" /></a></p>
 <p>En aquest diagrama, ara es reflexa principalment els diferents components que formen l'arquitectura de l'aplicació (interfície, serveis, gestió de l'estat). Com veiem, hem eliminat el main.js, hem reduit les connexions directes, i només hem mostrat les dependències més rellevants. Si alguna cosa requereix d'alguna aclaració, podem fer ús de notes per explicar els diferents conceptes o explicar relacions sense afegir més línies.</p>
 
 
