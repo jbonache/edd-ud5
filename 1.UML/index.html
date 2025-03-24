@@ -689,14 +689,17 @@
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="s">    class Producte {</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s">        - String descripció</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s">        - float preu</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s">    }</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s">    class Cistella {</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s">        - List&lt;Producte&gt; productes</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s">        - float preuTotal</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s">    }</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s">    Cistella &quot;1&quot; o-- &quot;0..*&quot; Producte</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="sb">```</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s">        + String ObteLiniaProducte()</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s">    }</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s">    class Cistella {</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s">        - List&lt;Producte&gt; productes</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s">        - float preuTotal</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s">        + void AfigProducte(Producte)</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="s">        + void MostraCistella()</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="s">    }</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="s">    Cistella &quot;1&quot; o-- &quot;0..*&quot; Producte</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="sb">```</span>
 </span></code></pre></div>
 <p>Generarà un diagrama com aquest:</p>
 <pre class="mermaid"><code>
@@ -710,8 +713,8 @@ classDiagram
     class Cistella {
         - List&lt;Producte&gt; productes
         - float preuTotal
-        +void AfigProducte(Producte)
-    +void MostraCistella()
+        + void AfigProducte(Producte)
+        + void MostraCistella()
     }
     Cistella "1" o-- "0..*" Producte    </code></pre>
 <!--
@@ -775,7 +778,7 @@ Quan generem el lloc web amb *MkDocs* (`mkdocs serve` o `mkdocs build`), el diag
 </span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="sb">` `</span>`
 </span></code></pre></div>
 Això ens genera el següen diagrama:</p>
-<p><a class="glightbox" href="../diagrames/1.UML/diagram_1040212076360565437.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/1.UML/diagram_1040212076360565437.svg" /></a></p>
+<p><a class="glightbox" href="../diagrames/1.UML/diagram_5831589034754817721.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Diagrama UML" src="../diagrames/1.UML/diagram_5831589034754817721.svg" /></a></p>
 <h4 id="extensions-per-a-vscode">Extensions per a VSCode</h4>
 <p>L'<strong>extensió PlantUML</strong> ens servirà per donar suport a aquest llenguatge en VSCode, amb remarcat de sintaxi i previsualització de diagrames.</p>
 <p><a class="glightbox" href="../img/plantuml.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/plantuml.png" /></a></p>
